@@ -1029,17 +1029,17 @@ function ziskaj_tabulku_podla_zapasov(all)
             if(zapasy[j][5]>zapasy[j][6])
             {
               vitazstva++;
-              body=body+localStorage.pocet_bodov_za_vyhru;
+              body=body+parseInt(localStorage.pocet_bodov_za_vyhru, 10);
             }
             else if(zapasy[j][5]==zapasy[j][6])
             {
               remizy++;
-              body=body+localStorage.pocet_bodov_za_remizu;
+              body=body+parseInt(localStorage.pocet_bodov_za_remizu, 10);
             }
             else 
             {
               prehry++;
-              body=body+localStorage.pocet_bodov_za_prehru;
+              body=body+parseInt(localStorage.pocet_bodov_za_prehru, 10);
             }
           }
         }
@@ -1058,17 +1058,17 @@ function ziskaj_tabulku_podla_zapasov(all)
             if(zapasy[j][6]>zapasy[j][5])
             {
               vitazstva++;
-              body=body+localStorage.pocet_bodov_za_vyhru;
+              body=body+parseInt(localStorage.pocet_bodov_za_vyhru, 10);
             }
             else if(zapasy[j][6]==zapasy[j][5])
             {
               remizy++;
-              body=body+localStorage.pocet_bodov_za_remizu;
+              body=body+parseInt(localStorage.pocet_bodov_za_remizu, 10);
             }
             else 
             {
               prehry++;
-              body=body+localStorage.pocet_bodov_za_prehru;
+              body=body+parseInt(localStorage.pocet_bodov_za_prehru, 10);
             }
           }
         }
