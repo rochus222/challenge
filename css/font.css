@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font/2NBgzUtEeyB-Xtpr9bm1CcNrJpg6AaJyP6Je_ycicWc.woff) format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: url(font/UC3ZEjagJi85gF9qFaBgIMt7VdvTyqNcZpjraknz5WE.woff) format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  src: url(font/9MkijrV-dEJ0-_NWV7E6N0jkdXy5UNqU9EkYFZX4vIU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 700;
+  src: url(font/n7G4PqJvFP2Kubl0VBLDEOupD9FCADMmu1K_5xLiQB6glnMp3_3A8V8Ai8YosRtX.woff) format('woff');
+}
