@@ -1195,7 +1195,7 @@ function uloz_vysledok(zapas)
   var tabulka=ziskaj_tabulku_podla_zapasov();
   vykresli_tabulku(zorad_tabulku_podla_bodov(tabulka));
   
-  localStorage.zapasyvpamati=localStorage.tymyvpamati=JSON.stringify(zapasy);
+  localStorage.zapasyvpamati=JSON.stringify(zapasy);
   
   zobraz_podstranku(4);
 }
