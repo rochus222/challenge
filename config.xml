@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.palikogler.challenge"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>CALCETTO Challenge</name>
+    <description>
+        CALCETTO Challenge for Android
+    </description>
+
+    <author href="https://palikogler.sk" email="pavolkogler@gmail.com">
+        Pali Kogler - PK Designs
+    </author>
+	<preference name="orientation" value="portrait" />
+	<preference name="permissions" value="none" />
+	<preference name="fullscreen" value="true" />
+	<preference name="android-installLocation" value="auto" />
+	<icon src="img/logo.png" width="57" height="57" />
+</widget>
