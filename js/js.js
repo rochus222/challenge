@@ -119,7 +119,6 @@ function exitFromApp()
 var page=0;
 function onBackKeyDown()
 {
-  alert("ok");
   if(page==0)
   {
     ukonciappku();
@@ -294,7 +293,7 @@ function uloz_nastavenia()
   localStorage.lang=$('#jazyk').val();
   zmen_jazyk();
   zobraz_nastavenia();
-  alert("Nastavenia boli úspešne zmenené.");
+  alert(""+lang_nastavenia_boli_zmenene+"");
 }
 
 function zmen_jazyk()
@@ -728,7 +727,7 @@ function vygeneruj_turnaj_turnaj()
   
   if(localStorage.pocet_postupujucich_tymov*aktualny_turnaj_pocet_skupin>pocet_tymov)
   {
-    alert("Na generovanie turnaja nie je dostatočný počet týmov");
+    alert(""+lang_malo_timov+"");
     return;
   }
   
