@@ -434,13 +434,29 @@ function pridaj_team()
 {
   vloz_tymy_do_aktualneho_turnaju();
   var team=$('#add_team_text').val();
-  var team_popis=team.replace(" ","_").toLowerCase();;
+  var team_popis=team.replace(" ","_").toLowerCase();
+  if(uz_team_existuje(team_popis))
+  {
+    alert(lang_tym_uz_existuje);
+    return;
+  }
   if(team!="")tymy.push([team,team_popis]);
   
   localStorage.tymyvpamati=JSON.stringify(tymy);
   
   vypis_tymy();
   zobraz_podstranku(1);
+}
+
+function uz_team_existuje(team_popis)
+{
+  var pocitadlo=0;
+  for(var i=0; i<tymy.length; i++)
+  {
+    if(tymy[i][1]==team_popis)pocitadlo++;
+  }
+  if(pocitadlo>0)return true;
+  else return false;
 }
 
 function vloz_tymy_do_aktualneho_turnaju()
