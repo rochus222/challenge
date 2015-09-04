@@ -56,7 +56,7 @@ $(document).ready(function(){
   vypis_tymy();
   nastav_menu();
   onLoad();
-
+  
   //MENU
   $("#menu-open").click(function(){
     otvor_menu();

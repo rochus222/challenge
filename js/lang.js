@@ -158,7 +158,7 @@ function ziskaj_popisy_v_jazyku()
     lang_nastavenia_boli_zmenene="Nastavenia boli úspešne zmenené.";
     
     lang_zobraz_velke_vysledky="Zobraz výsledkovú tabuľku";
-    lang_uloz_aktualny_vysledok="Ulož aktuálny výsledok";
+    lang_uloz_aktualny_vysledok="Save";
     lang_aktualny_turnaj="Aktuálny turnaj";
   }
   else if(localStorage.lang=="en")
@@ -247,7 +247,7 @@ function ziskaj_popisy_v_jazyku()
     lang_nastavenia_boli_zmenene="Settings were changed.";
     
     lang_zobraz_velke_vysledky="Show big results";
-    lang_uloz_aktualny_vysledok="Save actual result";
+    lang_uloz_aktualny_vysledok="Save";
     lang_aktualny_turnaj="Actual tournament";
   }
 }

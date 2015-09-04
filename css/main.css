@@ -437,11 +437,17 @@ p
 
 .zavri_vysledok
 {
-  width:100%;
-  padding:10px;
-  position:fixed;
-  bottom:0;
-  font-size:30px;
-  background:#000000;
+  border-top-left-radius:1000px;
+  border-top-right-radius:1000px;
+  width:10%;
+  margin-left:45%;
+  height:0;
+  color:#FFFFFF;
   text-align:center;
+  padding-bottom:3.5%;
+  padding-top:1.5%;
+  font-weight:700;
+  position:fixed;
+  bottom:0px;
+  background:rgba(0,0,0,0.6);
 }
