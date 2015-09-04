@@ -67,6 +67,10 @@ var lang_nastavenia_boli_zmenene="";
 var lang_zobraz_velke_vysledky="";
 var lang_uloz_aktualny_vysledok="";
 var lang_aktualny_turnaj="";
+var lang_aktualne_zapasy="";
+var lang_statistiky_popis="";
+var lang_aktulana_tabulka="";
+var neni_zadany_nazov_turnaja="";
 
 function ziskaj_popisy_v_jazyku()
 {
@@ -160,6 +164,10 @@ function ziskaj_popisy_v_jazyku()
     lang_zobraz_velke_vysledky="Zobraz výsledkovú tabuľku";
     lang_uloz_aktualny_vysledok="Save";
     lang_aktualny_turnaj="Aktuálny turnaj";
+    lang_aktualne_zapasy="Aktuálne zápasy";
+    lang_statistiky_popis="Štatistiky tímov zo všetkých turnajov";
+    lang_aktulana_tabulka="Aktuálna tabuľka";
+    neni_zadany_nazov_turnaja="Prosím zadajte názov turnaju.";
   }
   else if(localStorage.lang=="en")
   {
@@ -191,7 +199,7 @@ function ziskaj_popisy_v_jazyku()
     lang_nastavenie_skupin="Groups";
     
     lang_pocet_postupujucich="Advancing teams";
-    lang_hra_sa_na_odvetu="Riposte";
+    lang_hra_sa_na_odvetu="Rematch";
     lang_nahodne_play_off_v_turnaji="Random play-off in tournament";
     
     lang_ano="Yes";
@@ -249,5 +257,9 @@ function ziskaj_popisy_v_jazyku()
     lang_zobraz_velke_vysledky="Show big results";
     lang_uloz_aktualny_vysledok="Save";
     lang_aktualny_turnaj="Actual tournament";
+    lang_aktualne_zapasy="Actual matches";
+    lang_statistiky_popis="Statistics from all tournaments";
+    lang_aktulana_tabulka="Actual table";
+    neni_zadany_nazov_turnaja="Please insert the name of the tournament";
   }
 }

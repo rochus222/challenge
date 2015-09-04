@@ -376,8 +376,8 @@ function nastav_popisy_v_menu()
 {
   $("#menu-nazov").html(lang_stolny_futbal);
   $("#menu-1").html(lang_novy_turnaj);
-  $("#menu-2").html(lang_tabulka);
-  $("#menu-3").html(lang_zapasy);
+  $("#menu-2").html(lang_aktulana_tabulka);
+  $("#menu-3").html(lang_aktualne_zapasy);
   $("#menu-4").html(lang_turnaje);
   $("#menu-5").html(lang_statistiky_timov);
   $("#menu-6").html(lang_pravidla);
@@ -511,6 +511,11 @@ function uloz_udaje_turnaja()
 //generovanie turnaja zo zadanych udajov
 function generovat_turnaj()
 {
+  if($('#nazov_turnaja').val()=="")
+  {
+    alert(neni_zadany_nazov_turnaja);
+    return false;
+  }
   start_loading();
   uloz_udaje_turnaja();
   zacaty_turnaj=1;
@@ -1275,6 +1280,7 @@ function vykresli_tabulku(pole)
 {
   var pocitadlo=0;
   string="";
+  string+="<h1>"+turnaje[aktualny_turnaj_id][1]+"</h1>";
   for(var i=0; i<aktualny_turnaj_pocet_skupin; i++)
   {
     if(aktualny_turnaj_pocet_skupin!=0 && aktualny_turnaj_typ=="turnaj")string+="<h2>"+String.fromCharCode(i+65)+" skupina</h2>";
@@ -1542,6 +1548,7 @@ function vypis_statistiky_timov()
 function vrat_statistiky_timov(tabulka)
 {
   string="";
+  string+="<h1>"+lang_statistiky_popis+"</h1>";
   string+="<table width=\"100%\"><tr><th>"+lang_cislo+"</th><th>"+lang_tim+"</th><th>"+lang_zapasov+"</th><th>GF</th><th>GA</th><th>"+lang_body+"</th>";
   for(var i=0; i<tabulka.length; i++)
   {
