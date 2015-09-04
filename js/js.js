@@ -1323,8 +1323,9 @@ function zobraz_tabulku_vysledkov(zapas)
   $("#vysledok1").html("<p>"+$('#tym_1_vysledok').val()+"</p>");
   $("#vysledok2").html("<p>"+$('#tym_2_vysledok').val()+"</p>");
   var vyskapisma=$("#vysledok1 p").height();
-  $("#vysledok1 p").css({"margin-top":((sirka_displeja-vyskapisma)/2)+"px"});
-  $("#vysledok2 p").css({"margin-top":((sirka_displeja-vyskapisma)/2)+"px"});
+  var vyskazavri=$("#zavri_vysledok").height();
+  $("#vysledok1 p").css({"margin-top":((sirka_displeja-vyskapisma-vyskazavri)/2)+"px"});
+  $("#vysledok2 p").css({"margin-top":((sirka_displeja-vyskapisma-vyskazavri)/2)+"px"});
   
   $("#vysledok1").attr("onClick", "daj_gol(1,"+zapas+")");
   $("#vysledok2").attr("onClick", "daj_gol(2,"+zapas+")");
@@ -1356,6 +1357,12 @@ function daj_gol(tym,zapas)
   
   $("#vysledok1").html("<p>"+$('#tym_1_vysledok').val()+"</p>");
   $("#vysledok2").html("<p>"+$('#tym_2_vysledok').val()+"</p>");
+  
+  var sirka_displeja=$(document).width();
+  var vyskapisma=$("#vysledok1 p").height();
+  var vyskazavri=$("#zavri_vysledok").height();
+  $("#vysledok1 p").css({"margin-top":((sirka_displeja-vyskapisma-vyskazavri)/2)+"px"});
+  $("#vysledok2 p").css({"margin-top":((sirka_displeja-vyskapisma-vyskazavri)/2)+"px"});
 }
 
 function uloz_vysledok(zapas)
