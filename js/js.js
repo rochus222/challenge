@@ -109,12 +109,6 @@ function onLoad()
 function onDeviceReady() 
 {
   document.addEventListener("backbutton", onBackKeyDown, false);
-   window.height = $(window).height();
-   $(window).resize(function(){
-    window.currentHeight = $(this).height();
-    window.heightDiff = window.height - window.currentHeight;
-    alert(window.heightDiff);
-   });
 }
   
 function exitFromApp()
