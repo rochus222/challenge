@@ -119,7 +119,11 @@ function exitFromApp()
 var page=0;
 function onBackKeyDown()
 {
-  if(page==0)
+  if(otvorene_menu==1)
+  {
+    zatvor_menu();
+  }
+  else if(page==0)
   {
     ukonciappku();
   }
@@ -382,8 +386,10 @@ function nastav_popisy_v_menu()
 }
 
 /*funkcia na otvorenie menu*/
+var otvorene_menu=0;
 function otvor_menu()
 {
+  otvorene_menu=1;
   $("#clona").css({"left":"0"});
   $("#clona").animate({"opacity":"1"},400);
   $("#menu-open").animate({"left":"-50px"},100, "linear", function(){
@@ -394,6 +400,7 @@ function otvor_menu()
 /*funkcia na zatvorenie menu*/
 function zatvor_menu()
 {
+  otvorene_menu=0;
   $("#clona").animate({"opacity":"0"},400);
   $("#menu-content").animate({"left": "-80%"},300,"linear",function(){
     $("#menu-open").animate({"left":"0px"},100,"linear",function(){$("#clona").css({"left":"-100%"});});
