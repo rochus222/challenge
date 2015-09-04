@@ -54,6 +54,7 @@ $(document).ready(function(){
   zobraz_podstranku(0);
   vypis_tymy();
   nastav_menu();
+  onLoad();
 
   //MENU
   $("#menu-open").click(function(){
@@ -98,6 +99,84 @@ $(document).ready(function(){
     zobraz_podstranku('6');
   });
 });
+
+function onLoad()
+{
+  document.addEventListener("deviceready", onDeviceReady, true);
+}
+  
+function onDeviceReady() 
+{
+  document.addEventListener("backbutton", onBackKeyDown, false);
+}
+  
+function exitFromApp()
+{
+  navigator.app.exitApp();
+}
+
+var page=0;
+function onBackKeyDown()
+{
+  alert("ok");
+  if(page==0)
+  {
+    ukonciappku();
+  }
+  else if(page==1)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==2)
+  {
+    spat_na_vyber_tymov();
+  }
+  else if(page==3)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==4)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==5)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==6)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==7)
+  {
+    zobraz_podstranku('4');
+  }
+  else if(page==8)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==9)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==10)
+  {
+    zobraz_podstranku('0');
+  }
+  else if(page==11)
+  {
+    zobraz_podstranku('10');
+  } 
+}
+
+function ukonciappku()
+{
+  var answer = confirm("Chcete ukončiť aplikáciu?")
+  if (answer)
+  {
+navigator.app.exitApp();
+  }
+}
 
 /*LOADING*/
 var loading_rotate;

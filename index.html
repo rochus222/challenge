@@ -8,90 +8,9 @@
    
     <link href='css/font.css' rel='stylesheet' type='text/css'>
     <script src="js/js.js"></script>    
-    <script src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    
-    function onLoad()
-    {
-      alert("ok");
-      document.addEventListener("deviceready", onDeviceReady, true);
-    }
-          
-    function onDeviceReady() 
-    {
-      document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-          
-    function exitFromApp()
-    {
-      navigator.app.exitApp();
-    }
-    var page=0;
-    function onBackKeyDown()
-    {
-      alert("ok");
-      if(page==0)
-      {
-        ukonciappku();
-      }
-      else if(page==1)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==2)
-      {
-        spat_na_vyber_tymov();
-      }
-      else if(page==3)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==4)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==5)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==6)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==7)
-      {
-        zobraz_podstranku('4');
-      }
-      else if(page==8)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==9)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==10)
-      {
-        zobraz_podstranku('0');
-      }
-      else if(page==11)
-      {
-        zobraz_podstranku('10');
-      } 
-    }
-            
-    function ukonciappku()
-    {
-      var answer = confirm("Chcete ukončiť aplikáciu?")
-      if (answer)
-      {
-        navigator.app.exitApp();
-      }
-    }
-    </script>    
-    
+    <script src="phonegap.js"></script>      
   </head>
-  <body onload="onLoad();">
+  <body>
     <div id="head" class="head">
     </div>
     <div id="page" class="page">
