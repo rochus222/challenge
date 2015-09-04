@@ -64,6 +64,8 @@ var lang_pocet_bodov="";
 var lang_spat="";
 var lang_malo_timov="";
 var lang_nastavenia_boli_zmenene="";
+var lang_zobraz_velke_vysledky="";
+var lang_uloz_aktualny_vysledok="";
 
 function ziskaj_popisy_v_jazyku()
 {
@@ -153,6 +155,9 @@ function ziskaj_popisy_v_jazyku()
     
     lang_malo_timov="Na generovanie turnaja nie je dostatočný počet týmov";
     lang_nastavenia_boli_zmenene="Nastavenia boli úspešne zmenené.";
+    
+    lang_zobraz_velke_vysledky="Zobraz výsledkovú tabuľku";
+    lang_uloz_aktualny_vysledok="Ulož aktuálny výsledok";
   }
   else if(localStorage.lang=="en")
   {
@@ -238,5 +243,8 @@ function ziskaj_popisy_v_jazyku()
     
     lang_malo_timov="There is not enough teams for generating";
     lang_nastavenia_boli_zmenene="Settings were changed.";
+    
+    lang_zobraz_velke_vysledky="Show big results";
+    lang_uloz_aktualny_vysledok="Save actual result";
   }
 }

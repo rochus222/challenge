@@ -1303,7 +1303,7 @@ function zadaj_vysledok_zapasu(vysledok)
     option2=option2+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
   string="<h3>"+lang_zapas_c+" "+(zapasy[vysledok][0]+1)+"</h3><div class=\"zapas\"><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][3])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_1_vysledok\">"+option1+"</select></div></label><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][4])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_2_vysledok\">"+option2+"</select></div></label><br style=\"clear:both;\"/></div>";
-  string+="<button style=\"width:100%;\" onClick=\"zobraz_tabulku_vysledkov("+vysledok+");\" class=\"back\">Zobraz výsledkovú tabuľu</button>";
+  string+="<button style=\"width:100%;\" onClick=\"zobraz_tabulku_vysledkov("+vysledok+");\" class=\"back\">"+lang_zobraz_velke_vysledky+"</button>";
   
   string=string+"<button id=\"spat_zapasy\" style=\"width\"20%\" class=\"back\" onclick=\"zobraz_podstranku(4);\">"+lang_spat+"</button><button onClick=\"uloz_vysledok("+vysledok+")\" style=\"width:75%;\">"+lang_ulozit_vysledok+"</button>";
   obsah_stranky[7][1]=string;
@@ -1315,6 +1315,7 @@ function zobraz_tabulku_vysledkov(zapas)
 {
   je_zobrazena_tabulka_vysledkov_zapasu=1;
   $("#zavri_vysledok").attr("onClick", "zavri_tabulku_vysledkov("+zapas+")");
+  $("#zavri_vysledok").html(""+lang_uloz_aktualny_vysledok+"");
   var sirka_displeja=$(document).width();
   var vyska_displeja=$(document).height();
   var posun=(vyska_displeja-sirka_displeja)/2;
