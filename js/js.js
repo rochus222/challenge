@@ -102,7 +102,7 @@ $(document).ready(function(){
 function onLoad()
 {
   alert("ok");
-  document.addEventListener("deviceready", onBackKeyDown, true);
+  document.addEventListener("deviceready", onDeviceReady, true);
 }
 			
 function onDeviceReady() 
