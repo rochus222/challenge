@@ -418,6 +418,7 @@ p
   left:0;
   z-index:100000; 
   transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
   background:#FFFFFF;
   color:#FFFFFF;
   display:none;
