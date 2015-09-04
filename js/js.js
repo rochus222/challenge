@@ -52,7 +52,7 @@ $(document).ready(function(){
   zobraz_podstranku(0);
   vypis_tymy();
   nastav_menu();
-  
+
   //MENU
   $("#menu-open").click(function(){
     otvor_menu();
@@ -255,7 +255,7 @@ function vypis_tymy()
     else checked="";
     stranka=stranka+"<label><div class=\"team\"><input type=\"checkbox\" class=\"team-check\" id=\""+tymy[i][1]+"\" "+checked+"/>"+tymy[i][0]+"</div></label>";
   }
-  stranka=stranka+"<input type=\"text\" id=\"add_team_text\" class=\"add-input\" placeholder=\"Pridať team\"><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></input>";
+  stranka=stranka+"<div class=\"add-input\"><input type=\"text\" id=\"add_team_text\" placeholder=\"Pridať team\"></input><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></div>";
   obsah_stranky[1][1]=stranka;
 }
 
