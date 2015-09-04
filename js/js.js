@@ -54,6 +54,7 @@ $(document).ready(function(){
   zobraz_podstranku(0);
   vypis_tymy();
   nastav_menu();
+  onLoad();
 
   //MENU
   $("#menu-open").click(function(){
@@ -101,6 +102,7 @@ $(document).ready(function(){
 
 function onLoad()
 {
+  alert("ok");
   document.addEventListener("deviceready", onBackKeyDown, true);
 }
 			
