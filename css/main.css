@@ -408,3 +408,49 @@ p
 {
   margin-top:1000px;
 }
+
+.vysledky
+{
+  width:0;
+  height:0;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:100000; 
+  transform: rotate(90deg);
+  background:#FFFFFF;
+  color:#FFFFFF;
+  display:none;
+}
+
+.vysledok1
+{
+  width:50%;
+  height:100%;
+  background:red;
+  vertical-align: middle;
+  float:left;
+  text-align:center;
+  font-size:100px;
+  font-weight:700;
+}
+
+.vysledok2
+{
+  width:50%;
+  height:100%;
+  background:blue;
+  float:left;
+  vertical-align: middle;
+  text-align:center;
+  font-size:100px;
+  font-weight:700;
+}
+
+.zavri_vysledok
+{
+  width:100%;
+  height:50px;
+  position:fixed;
+  bottom:0;
+}

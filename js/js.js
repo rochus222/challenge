@@ -149,7 +149,8 @@ function onBackKeyDown()
   }
   else if(page==7)
   {
-    zobraz_podstranku('4');
+    if(je_zobrazena_tabulka_vysledkov_zapasu==1)($("#vysledky").css({"display":"none"}));
+    else zobraz_podstranku('4');
   }
   else if(page==8)
   {
@@ -1302,9 +1303,58 @@ function zadaj_vysledok_zapasu(vysledok)
     option2=option2+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
   string="<h3>"+lang_zapas_c+" "+(zapasy[vysledok][0]+1)+"</h3><div class=\"zapas\"><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][3])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_1_vysledok\">"+option1+"</select></div></label><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][4])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_2_vysledok\">"+option2+"</select></div></label><br style=\"clear:both;\"/></div>";
+  string+="<button style=\"width:100%;\" onClick=\"zobraz_tabulku_vysledkov("+vysledok+");\" class=\"back\">Zobraz výsledkovú tabuľu</button>";
+  
   string=string+"<button id=\"spat_zapasy\" style=\"width\"20%\" class=\"back\" onclick=\"zobraz_podstranku(4);\">"+lang_spat+"</button><button onClick=\"uloz_vysledok("+vysledok+")\" style=\"width:75%;\">"+lang_ulozit_vysledok+"</button>";
   obsah_stranky[7][1]=string;
   zobraz_podstranku(7);
+}
+
+var je_zobrazena_tabulka_vysledkov_zapasu=0;
+function zobraz_tabulku_vysledkov(zapas)
+{
+  je_zobrazena_tabulka_vysledkov_zapasu=1;
+  var sirka_displeja=$(document).width();
+  var vyska_displeja=$(document).height();
+  var posun=(vyska_displeja-sirka_displeja)/2;
+  $("#vysledky").css({"display":"block", "width":vyska_displeja+"px", "height":sirka_displeja+"px","top":posun+"px", "left":"-"+posun+"px", "position":"fixed"});
+  $("#vysledok1").html("<p>"+$('#tym_1_vysledok').val()+"</p>");
+  $("#vysledok2").html("<p>"+$('#tym_2_vysledok').val()+"</p>");
+  var vyskapisma=$("#vysledok1 p").height();
+  $("#vysledok1 p").css({"margin-top":((sirka_displeja-vyskapisma)/2)+"px"});
+  $("#vysledok2 p").css({"margin-top":((sirka_displeja-vyskapisma)/2)+"px"});
+  
+  $("#vysledok1").attr("onClick", "daj_gol(1,"+zapas+")");
+  $("#vysledok2").attr("onClick", "daj_gol(2,"+zapas+")");
+  $("#zavri_vysledok").attr("onClick", "zavri_tabulku_vysledkov("+zapas+")");
+}
+
+function zavri_tabulku_vysledkov(zapas)
+{
+  $("#vysledky").css({"display":"none"});
+  uloz_vysledok(zapas);
+  je_zobrazena_tabulka_vysledkov_zapasu=0;
+}
+
+function daj_gol(tym,zapas)
+{
+  var golov1=$('#tym_1_vysledok').val();
+  var golov2=$('#tym_2_vysledok').val();
+  
+  if(golov1=="-")golov1=0;
+  if(golov2=="-")golov2=0;
+  
+  golov1=parseInt(golov1, 10);
+  golov2=parseInt(golov2, 10);
+
+  if(tym==1)golov1++;
+  else if(tym==2)golov2++;
+  
+  $('#tym_1_vysledok').val(golov1);
+  $('#tym_2_vysledok').val(golov2);
+  
+  $("#vysledok1").html("<p>"+$('#tym_1_vysledok').val()+"</p>");
+  $("#vysledok2").html("<p>"+$('#tym_2_vysledok').val()+"</p>");
 }
 
 function uloz_vysledok(zapas)
