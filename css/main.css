@@ -3,7 +3,7 @@
 body
 {
   font-family: 'Playfair Display', serif;
-  position:absolute;
+  position:relative;
   background:url('../img/back.png');
   background-attachment:fixed;
   width:100%;
@@ -259,21 +259,6 @@ p
   font-size:30px;
 }
 
-.add-input input:focus 
-{
-  bottom:auto;
-  top:40px;
-  position:fixed;
-  z-index:1000000;
-}
-
-.add-input input:focus  + .add-submit
-{
-  bottom:auto;
-  top:55px;
-  position:fixed;
-  z-index:1000000;
-}
 
 .add-submit
 {
