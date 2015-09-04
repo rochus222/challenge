@@ -72,6 +72,8 @@ var lang_statistiky_popis="";
 var lang_aktulana_tabulka="";
 var neni_zadany_nazov_turnaja="";
 var lang_tym_uz_existuje="";
+var lang_pridaj_team_1="";
+var lang_pridaj_team_2="";
 
 function ziskaj_popisy_v_jazyku()
 {
@@ -170,6 +172,8 @@ function ziskaj_popisy_v_jazyku()
     lang_aktulana_tabulka="Aktuálna tabuľka";
     neni_zadany_nazov_turnaja="Prosím zadajte názov turnaju.";
     lang_tym_uz_existuje="Tím s takýmto názvom už existuje";
+    lang_pridaj_team_1="Naozaj chcete pridať tím ";
+    lang_pridaj_team_2="? Editácia názvu po pridaní tímu nebude možná.";
   }
   else if(localStorage.lang=="en")
   {
@@ -264,5 +268,7 @@ function ziskaj_popisy_v_jazyku()
     lang_aktulana_tabulka="Actual table";
     neni_zadany_nazov_turnaja="Please insert the name of the tournament";
     lang_tym_uz_existuje="Team already exists.";
+    lang_pridaj_team_1="Are you sure you want to add team ";
+    lang_pridaj_team_2="? You want be able to edit team after addition";
   }
 }

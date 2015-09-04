@@ -438,8 +438,9 @@ function pridaj_team()
   if(uz_team_existuje(team_popis))
   {
     alert(lang_tym_uz_existuje);
-    return;
+    return false;
   }
+  if(!confirm(lang_pridaj_team_1+""+team+""+lang_pridaj_team_2))return false;
   if(team!="")tymy.push([team,team_popis]);
   
   localStorage.tymyvpamati=JSON.stringify(tymy);
