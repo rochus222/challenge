@@ -29,7 +29,7 @@ var obsah_stranky=[
 
 if(localStorage.tymyvpamati===undefined)tymy=[];
 else tymy=JSON.parse(localStorage.tymyvpamati);
-//id,turnaj, kolo, prvy tym, druhy tym, gol prvy tym, gol druhy tym
+//id,turnaj, kolo, prvy tym, druhy tym, gol prvy tym, gol druhy tym, skupina, zakaz editacie
 if(localStorage.zapasyvpamati===undefined)zapasy=[];
 else zapasy=JSON.parse(localStorage.zapasyvpamati);
 
@@ -992,6 +992,7 @@ function vypis_zapasy_aktualny_turnaj()
         {
           nazov_tym2=ziskaj_nazov_tymu_z_id(zapasy[i][4]);
         }
+        if(zapasy[i][8]==1)onclick="";
         string=string+"<div class=\"zapas\" onClick=\""+onclick+"\"><h3>"+lang_zapas_c+" "+(zapasy[i][0]+1)+""+skupina_write+"</h3><div class=\"zapas-team redteam\">"+nazov_tym1+"</div><div class=\"zapas-vysledok\">"+zapasy[i][5]+"</div><div class=\"zapas-team blueteam\">"+nazov_tym2+"</div><div class=\"zapas-vysledok\">"+zapasy[i][6]+"</div><br style=\"clear:both;\"/></div>";
         pocitadlo++;
       }
@@ -1311,33 +1312,9 @@ function uloz_vysledok(zapas)
 {
   if(aktualny_turnaj_typ=="play_off")
   {
-    if(!confirm(""+lang_ulozit_vysledok_confirm+""))return false;
-    var vitaz="";
-    if($('#tym_1_vysledok').val()>$('#tym_2_vysledok').val())vitaz=zapasy[zapas][3];
-    if($('#tym_1_vysledok').val()<$('#tym_2_vysledok').val())vitaz=zapasy[zapas][4];
-    if(vitaz=="")
-    {
-      alert("V play-off nesmie byť remíza!");
-      return;
-    }
-    ovplyvni_ostatne_zapasy(zapasy[zapas][0], vitaz);
-  }
-
-  zapasy[zapas][5]=$('#tym_1_vysledok').val();
-  zapasy[zapas][6]=$('#tym_2_vysledok').val();
-  
-  if(aktualny_turnaj_typ=="turnaj")
-  {  
-    if(zisti_ci_je_kompletna_skupinova_faza())
+    if($('#tym_1_vysledok').val()!="-"&&$('#tym_2_vysledok').val()!="-")
     {
       if(!confirm(""+lang_ulozit_vysledok_confirm+""))return false;
-      for(var i=0; i<aktualny_turnaj_pocet_skupin;i++)
-      {
-        for(var j=0; j<localStorage.pocet_postupujucich_tymov;j++)
-        {
-          ovplyvni_ostatne_zapasy(String.fromCharCode(i+65)+""+j, ziskaj_tym_z_tabulky(String.fromCharCode(i+65),j))
-        }
-      }
       var vitaz="";
       if($('#tym_1_vysledok').val()>$('#tym_2_vysledok').val())vitaz=zapasy[zapas][3];
       if($('#tym_1_vysledok').val()<$('#tym_2_vysledok').val())vitaz=zapasy[zapas][4];
@@ -1347,6 +1324,39 @@ function uloz_vysledok(zapas)
         return;
       }
       ovplyvni_ostatne_zapasy(zapasy[zapas][0], vitaz);
+      zapasy[zapas][8]=1;
+    }
+  }
+  
+  zapasy[zapas][5]=$('#tym_1_vysledok').val();
+  zapasy[zapas][6]=$('#tym_2_vysledok').val();
+  
+  if(aktualny_turnaj_typ=="turnaj")
+  {  
+    if($('#tym_1_vysledok').val()!="-"&&$('#tym_2_vysledok').val()!="-")
+    {
+      if(zisti_ci_je_kompletna_skupinova_faza())
+      {
+        if(!confirm(""+lang_ulozit_vysledok_confirm+""))return false;
+        zakaz_zmenu_zapasov_v_tabulkach();
+        for(var i=0; i<aktualny_turnaj_pocet_skupin;i++)
+        {
+          for(var j=0; j<localStorage.pocet_postupujucich_tymov;j++)
+          {
+            ovplyvni_ostatne_zapasy(String.fromCharCode(i+65)+""+j, ziskaj_tym_z_tabulky(String.fromCharCode(i+65),j))
+          }
+        }
+        var vitaz="";
+        if($('#tym_1_vysledok').val()>$('#tym_2_vysledok').val())vitaz=zapasy[zapas][3];
+        if($('#tym_1_vysledok').val()<$('#tym_2_vysledok').val())vitaz=zapasy[zapas][4];
+        if(vitaz=="" && zapasy[zapas][7]==undefined)
+        {
+          alert(""+lang_ulozit_vysledok_alert+"");
+          return;
+        }
+        ovplyvni_ostatne_zapasy(zapasy[zapas][0], vitaz);
+        zapasy[zapas][8]=1;
+      }
     }
   }
 
@@ -1357,6 +1367,17 @@ function uloz_vysledok(zapas)
   localStorage.zapasyvpamati=JSON.stringify(zapasy);
   
   zobraz_podstranku(4);
+}
+
+function zakaz_zmenu_zapasov_v_tabulkach()
+{
+  for(var i=0; i<zapasy.length; i++)
+  {
+    if(zapasy[i][1]==aktualny_turnaj_id && !(zapasy[i][7]===undefined))
+    {
+      zapasy[i][8]=1;
+    }
+  }
 }
 
 function ziskaj_tym_z_tabulky(skupina, poradie)
