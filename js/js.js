@@ -24,6 +24,7 @@ var obsah_stranky=[
   [""+lang_nastavenia+"", ""],
   [""+lang_turnaje+"", ""],
   [""+lang_statistiky_timov+"", ""],
+  ["", ""],
   ["", ""]
 ];
 
@@ -41,8 +42,7 @@ var vytvor_turnaj_nazov="";
 var vytvor_turnaj_typ="";
 var vytvor_turnaj_pocet_skupin="";
 
-if(turnaje.length==0)zacaty_turnaj=0;
-else zacaty_turnaj=1;
+var zacaty_turnaj=0;
 
 var aktualny_turnaj_nazov="";
 var aktualny_turnaj_typ="";
@@ -1262,6 +1262,7 @@ function zorad_tabulku_podla_bodov(tabulka)
 
 function vykresli_tabulku(pole)
 {
+  var pocitadlo=0;
   string="";
   for(var i=0; i<aktualny_turnaj_pocet_skupin; i++)
   {
@@ -1269,10 +1270,10 @@ function vykresli_tabulku(pole)
     string+="<table width=\"100%\"><tr><th>Č.</th><th>"+lang_tim+"</th><th>"+lang_zapasov+"</th><th>GF</th><th>GA</th><th>"+lang_body+"</th></tr>";
     for(var j=0; j<pole.length;j++)
     {
-      //treba doplnit body a goly
       if(aktualny_turnaj_pocet_skupin==1 || pole[j][9]==String.fromCharCode(i+65))
       {
-        string=string+"<tr><td>"+(j+1)+".</td><td>"+pole[j][0]+"</td><td>"+ pole[j][2] +"</td><td>"+ pole[j][3] +"</td><td>"+ pole[j][4] +"</td><td>"+ pole[j][8] +"</td></tr>";
+        string=string+"<tr onClick=\"vypis_statistika_team_aktualny_turnaj("+pocitadlo+");\"><td>"+(j+1)+".</td><td>"+pole[j][0]+"</td><td>"+ pole[j][2] +"</td><td>"+ pole[j][3] +"</td><td>"+ pole[j][4] +"</td><td>"+ pole[j][8] +"</td></tr>";
+        pocitadlo++;
       }
     }
     string=string+"</table>";
@@ -1502,6 +1503,8 @@ function vypis_turnaje()
 
 function nacitaj_turnaj(id)
 {
+  zacaty_turnaj=1;
+  nastav_menu();
   if(aktualny_turnaj_id!=id || aktualny_turnaj_id==0)
   {
     aktualny_turnaj_nazov=turnaje[id][1];
@@ -1561,4 +1564,30 @@ function vypis_statistika_team(id)
   string+="<button onClick=\"zobraz_podstranku(10);\" style=\"width:100%;\">"+lang_spat+"</button>";
   obsah_stranky[11][1]=string;
   zobraz_podstranku(11);
+}
+
+function vypis_statistika_team_aktualny_turnaj(id)
+{
+  var tabulka=ziskaj_tabulku_podla_zapasov();
+  tabulka=zorad_tabulku_podla_bodov(tabulka);
+  obsah_stranky[12][0]=tabulka[id][0];
+
+  string="";
+  string+="<table width=\"100%\">";
+  string+="<tr><th colspan=\"2\">"+lang_statistiky+"</th>";
+  string+="<tr><td>"+lang_nazov+"</td><td>"+tabulka[id][0]+"</td>";
+  string+="<tr><td>"+lang_aktualny_turnaj+"</td><td>"+turnaje[aktualny_turnaj_id][1]+"</td>";
+  string+="<tr><td>ID</td><td>"+tabulka[id][1]+"</td>";
+  string+="<tr><td>"+lang_pocet_odohranych_zapasov+"</td><td>"+tabulka[id][2]+"</td>";
+  string+="<tr><td>"+lang_pocet_danych_golov+"</td><td>"+tabulka[id][3]+"</td>";
+  string+="<tr><td>"+lang_pocet_dostanych_golov+"</td><td>"+tabulka[id][4]+"</td>";
+  string+="<tr><td>"+lang_bilancia_golov+"</td><td>"+(tabulka[id][3]-tabulka[id][4])+"</td>";
+  string+="<tr><td>"+lang_pocet_vitazstiev+"</td><td>"+tabulka[id][5]+"</td>";
+  string+="<tr><td>"+lang_pocet_remiz+"</td><td>"+tabulka[id][6]+"</td>";
+  string+="<tr><td>"+lang_pocet_prehier+"</td><td>"+tabulka[id][7]+"</td>";
+  string+="<tr><td>"+lang_pocet_bodov+"</td><td>"+tabulka[id][8]+"</td>";
+  string+="</table>";
+  string+="<button onClick=\"zobraz_podstranku(3);\" style=\"width:100%;\">"+lang_spat+"</button>";
+  obsah_stranky[12][1]=string;
+  zobraz_podstranku(12);
 }

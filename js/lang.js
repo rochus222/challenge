@@ -66,6 +66,7 @@ var lang_malo_timov="";
 var lang_nastavenia_boli_zmenene="";
 var lang_zobraz_velke_vysledky="";
 var lang_uloz_aktualny_vysledok="";
+var lang_aktualny_turnaj="";
 
 function ziskaj_popisy_v_jazyku()
 {
@@ -158,6 +159,7 @@ function ziskaj_popisy_v_jazyku()
     
     lang_zobraz_velke_vysledky="Zobraz výsledkovú tabuľku";
     lang_uloz_aktualny_vysledok="Ulož aktuálny výsledok";
+    lang_aktualny_turnaj="Aktuálny turnaj";
   }
   else if(localStorage.lang=="en")
   {
@@ -246,5 +248,6 @@ function ziskaj_popisy_v_jazyku()
     
     lang_zobraz_velke_vysledky="Show big results";
     lang_uloz_aktualny_vysledok="Save actual result";
+    lang_aktualny_turnaj="Actual tournament";
   }
 }
