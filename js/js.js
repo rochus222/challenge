@@ -243,7 +243,7 @@ function zobraz_nastavenia()
   }
   string+="<label><div class=\"zapas-team\">"+lang_body_za_prehru+"</div><div class=\"zapas-vysledok-select\"><select id=\"body_prehra\">"+option+"</select></div></label>";
   
-  string+="<h1>"+lang_nastavenie_skupin+"</h1>";
+  string+="<br style=\"clear:both;\"/><h1>"+lang_nastavenie_skupin+"</h1>";
   var option="";
   var selected1="";
   var selected2="";
@@ -267,7 +267,7 @@ function zobraz_nastavenia()
   else if(localStorage.nahodny_vyber_pri_play_off_turnaju==0)selected0="selected"
   string+="<label><div class=\"zapas-team\">"+lang_nahodne_play_off_v_turnaji+"</div><div class=\"zapas-vysledok-select\"><select id=\"nahodny_vyber\"><option value=\"1\" "+selected1+">"+lang_ano+"</option><option value=\"0\" "+selected0+">"+lang_nie+"</option></select></div></label>";
   
-  string+="<h1>"+lang_nastavenie_aplikacie+"</h1>";
+  string+="<br style=\"clear:both;\"/><h1>"+lang_nastavenie_aplikacie+"</h1>";
   var selectedsk="";
   var selecteden="";
   if(localStorage.lang=="sk")selectedsk="selected";
@@ -728,7 +728,7 @@ function vygeneruj_turnaj_turnaj()
   if(localStorage.pocet_postupujucich_tymov*aktualny_turnaj_pocet_skupin>pocet_tymov)
   {
     alert(""+lang_malo_timov+"");
-    return;
+    return false;
   }
   
   /*rozdelenie tymov do tabulky*/
