@@ -168,6 +168,10 @@ function onBackKeyDown()
   {
     zobraz_podstranku('10');
   } 
+  else if(page==12)
+  {
+    zobraz_podstranku('3');
+  } 
 }
 
 function ukonciappku()
