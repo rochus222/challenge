@@ -247,14 +247,16 @@ p
   text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
 }
 
+.add-input
+{
+  position:relative;
+}
+
 .add-input input
 {
   width:100%;
   height:50px;
   padding:10px 2%;
-  position:absolute;
-  bottom:0px;
-  left:0;
   color:#42973a;
   font-size:30px;
 }
@@ -268,7 +270,7 @@ p
   background:#42973a;
   color:#FFFFFF;
   font-size:40px;
-  position:fixed;
+  position:absolute;
   bottom:5px;
   right:5px;
   z-index:1000;

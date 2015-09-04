@@ -407,14 +407,15 @@ function zobraz_podstranku(stranka)
 
 function vypis_tymy()
 {
-  var stranka="<button id=\"dalej_udaje_turnaja\" onClick=\"zadanie_udajov_turnaja()\" class=\"next\">&#x25ba;</button>";
+  var stranka="";
+  stranka=stranka+"<div class=\"add-input\"><input type=\"text\" id=\"add_team_text\" placeholder=\""+lang_pridat_team+"\"></input><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></div>";
+  stranka+="<button id=\"dalej_udaje_turnaja\" onClick=\"zadanie_udajov_turnaja()\" class=\"next\">&#x25ba;</button>";
   for(var i=0; i<tymy.length;i++)
   {
     if(tymy[i][2]==1)checked='checked';
     else checked="";
     stranka=stranka+"<label><div class=\"team\"><input type=\"checkbox\" class=\"team-check\" id=\""+tymy[i][1]+"\" "+checked+"/>"+tymy[i][0]+"</div></label>";
   }
-  stranka=stranka+"<div class=\"add-input\"><input type=\"text\" id=\"add_team_text\" placeholder=\""+lang_pridat_team+"\"></input><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></div>";
   obsah_stranky[1][1]=stranka;
 }
 
