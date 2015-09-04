@@ -54,7 +54,6 @@ $(document).ready(function(){
   zobraz_podstranku(0);
   vypis_tymy();
   nastav_menu();
-  onLoad();
 
   //MENU
   $("#menu-open").click(function(){
