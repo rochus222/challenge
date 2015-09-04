@@ -117,6 +117,7 @@ function exitFromApp()
 var page=0;
 function onBackKeyDown()
 {
+  alert("ok");
 	if(page==0)
 	{
     ukonciappku();
