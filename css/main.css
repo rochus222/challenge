@@ -439,14 +439,15 @@ p
 {
   border-top-left-radius:1000px;
   border-top-right-radius:1000px;
-  width:10%;
-  margin-left:45%;
+  width:20%;
+  margin-left:40%;
   height:0;
   color:#FFFFFF;
   text-align:center;
-  padding-bottom:3.5%;
-  padding-top:1.5%;
+  padding-bottom:6%;
+  padding-top:4%;
   font-weight:700;
+  font-size:1.5em;
   position:fixed;
   bottom:0px;
   background:rgba(0,0,0,0.6);
