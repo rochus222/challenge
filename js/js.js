@@ -1314,6 +1314,7 @@ var je_zobrazena_tabulka_vysledkov_zapasu=0;
 function zobraz_tabulku_vysledkov(zapas)
 {
   je_zobrazena_tabulka_vysledkov_zapasu=1;
+  $("#zavri_vysledok").attr("onClick", "zavri_tabulku_vysledkov("+zapas+")");
   var sirka_displeja=$(document).width();
   var vyska_displeja=$(document).height();
   var posun=(vyska_displeja-sirka_displeja)/2;
@@ -1326,7 +1327,6 @@ function zobraz_tabulku_vysledkov(zapas)
   
   $("#vysledok1").attr("onClick", "daj_gol(1,"+zapas+")");
   $("#vysledok2").attr("onClick", "daj_gol(2,"+zapas+")");
-  $("#zavri_vysledok").attr("onClick", "zavri_tabulku_vysledkov("+zapas+")");
 }
 
 function zavri_tabulku_vysledkov(zapas)
