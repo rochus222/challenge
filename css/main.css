@@ -60,6 +60,15 @@ button
   float:right;
   border:none;
   border-radius:5px;
+  border:2px solid #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+select
+{
+  background:#FFFFFF;
 }
 
 li
@@ -84,6 +93,10 @@ p
   background:#FFFFFF;
   color:#42973a;
   float:left;
+  border:2px solid #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .back2
@@ -109,6 +122,10 @@ p
   z-index:1000;
   padding:none;
   font-size:12px;
+  border:2px solid #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .head
