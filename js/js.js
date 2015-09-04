@@ -101,7 +101,6 @@ $(document).ready(function(){
 
 function onLoad()
 {
-  alert("ok");
   document.addEventListener("deviceready", onBackKeyDown, true);
 }
 			
