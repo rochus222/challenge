@@ -1,3 +1,4 @@
+ziskaj_popisy_v_jazyku();
 if(localStorage.prvy_krat===undefined)
 {
   localStorage.pocet_bodov_za_vyhru=3;
@@ -12,17 +13,17 @@ if(localStorage.prvy_krat===undefined)
 }
 //head, obsah stranky
 var obsah_stranky=[
-  ["", "<div onClick=\"zobraz_podstranku('1');\" class=\"mainpage\"><img width=\"80%\" style=\"margin-top:20%;\" src=\"img/logo.png\"/><div class=\"home-button\">Vytvor turnaj</div></div>"],
-  ["Zvoľ tímy", ""],
-  ["Nový turnaj", ""],
-  ["Tabuľka", ""],
-  ["Zápasy", ""],
-  ["Pravidlá", "<h1>Zatvorený stôl s vhadzovačom</h1><ul><li>je zakázané : pretáčať hráčov o viac ako 1 otáčku, držať súperové tyče, posúvať stôl ak je lopta v hre, nevhodne znervózňovať súpera</li><li>spoluhráči si môžu vymienať pozície obrana útok po každom góle</li><li>po vhodení nechať prejsť loptu na druhú stranu stola a rozohrať stredovými hráčmi</li><li>strednou tyčou s piatimi hráčmi nestrielať z prvej, len po nahrávke na tyči</li><li>hráč by mal loptu posunúť z tyče - prihrať, alebo strielať do 15 sekúnd</li><li>gól platí aj keď loptička vyletí z brány</li><li>mŕtva lopty - lopta nedosiahnuteľná žiadnym hráčom - keďže sa jedná o uzavretý stôl, je nutné ho podvihnúť. Hráč, ku ktorému sa lopta dostane by mal rozohrať - nahrať si s ďalším hráčom na tyči a až potom pokračovať v hre</li></ul><h1>Otvorený futbalový stôl</h1><ul><li>je zakázané: pretáčať hráčov o viac ako 1 otáčku, držať súperove tyče, posúvať stôl ak je lopta v hre, zasahovať rukou, alebo inými predmetmi do hry, nevhodne znervózňovať súpera</li><li>hráči losujú kto bude rozohrávať, rozohráva sa zo stredu prihrávkou na tyči</li><li>hrá sa do dosiahnutia 10 gólov, alebo podľa dohody</li><li>gól platí aj keď lopta vyletí z brány, nasleduje rozohrávka hráča čo dostal gól</li><li>mŕtva lopta - hráč, ktorý bol naposledy v kontakte s loptou, alebo strielal prichádza o loptu a súper si ju nastaví a rozohráva z obrany prihrávkou.</li><li>hráč by mal loptu posunúť z tyče - prihrať, alebo strielať do 15 sekúnd</li><li>hráč, ktorý sa dopustí faulu (gól po pretáčaní, zdržovanie hry...) prichádza o loptu a súper rozohráva z obrany</li></ul>"],
-  ["O aplikácii", "<h1>Popis</h1><p>Aplikácia vznikla ako výsledok riešenia CALCETTO Challengu od spoločnosti ERNI zverejnenom na stránke www.challengest.sk. Aplikácia umožňuje vytváranie rôznych typov turnajov, zaznamenávanie výsledkov a generovanie štatistík podľa odohraných zápasov. Aplikácia je vytvorená pomocou aplikácie Phonegap a napísaná pomocou HTML+CSS+JavaScript.</p><h1>Autor</h1><p style=\"text-align:center;\"><b>Pavol Kögler - PK Designs</b><br />Nová 1076<br />925 22 Veľké Úľany<br /><br /><b>pavolkogler@gmail.com</b></p><br /><h1>© 2015 PK Designs | All rights reserved</h1>"],
-  ["Výsledok", ""],
-  ["Nastavenia", ""],
-  ["Turnaje", ""],
-  ["Štatistiky tímov", ""],
+  ["", "<div onClick=\"zobraz_podstranku('1');\" class=\"mainpage\"><img width=\"80%\" style=\"margin-top:20%;\" src=\"img/logo.png\"/><div class=\"home-button\">"+lang_vytvor_turnaj+"</div></div>"],
+  [""+lang_zvol_timy+"", ""],
+  [""+lang_novy_turnaj+"", ""],
+  [""+lang_tabulka+"", ""],
+  [""+lang_zapasy+"", ""],
+  [""+lang_pravidla+"", ""+lang_pravidla_sub+""],
+  [""+lang_o_aplikacii+"", ""+lang_o_aplikacii_sub+""],
+  [""+lang_vysledok+"", ""],
+  [""+lang_nastavenia+"", ""],
+  [""+lang_turnaje+"", ""],
+  [""+lang_statistiky_timov+"", ""],
   ["", ""]
 ];
 
@@ -171,10 +172,10 @@ function onBackKeyDown()
 
 function ukonciappku()
 {
-  var answer = confirm("Chcete ukončiť aplikáciu?")
+  var answer = confirm(""+lang_close_app+"")
   if (answer)
   {
-navigator.app.exitApp();
+    navigator.app.exitApp();
   }
 }
 
@@ -220,8 +221,8 @@ function zobraz_nastavenia()
     option=option+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
   
-  string="<h1>Nastavenie bodovania</h1>";
-  string+="<label><div class=\"zapas-team\">Body za výhru</div><div class=\"zapas-vysledok-select\"><select id=\"body_vyhra\">"+option+"</select></div></label>";
+  string="<h1>"+lang_nastavenie_bodovania+"</h1>";
+  string+="<label><div class=\"zapas-team\">"+lang_body_za_vyhru+"</div><div class=\"zapas-vysledok-select\"><select id=\"body_vyhra\">"+option+"</select></div></label>";
   
   var option="";
   var selected;
@@ -231,7 +232,7 @@ function zobraz_nastavenia()
     else selected="";
     option=option+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
-  string+="<label><div class=\"zapas-team\">Body za remízu</div><div class=\"zapas-vysledok-select\"><select id=\"body_remiza\">"+option+"</select></div></label>";
+  string+="<label><div class=\"zapas-team\">"+lang_body_za_remizu+"</div><div class=\"zapas-vysledok-select\"><select id=\"body_remiza\">"+option+"</select></div></label>";
   
   var option="";
   var selected;
@@ -241,9 +242,9 @@ function zobraz_nastavenia()
     else selected="";
     option=option+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
-  string+="<label><div class=\"zapas-team\">Body za prehru</div><div class=\"zapas-vysledok-select\"><select id=\"body_prehra\">"+option+"</select></div></label>";
+  string+="<label><div class=\"zapas-team\">"+lang_body_za_prehru+"</div><div class=\"zapas-vysledok-select\"><select id=\"body_prehra\">"+option+"</select></div></label>";
   
-  string+="<h1>Nastavenie skupín</h1>";
+  string+="<h1>"+lang_nastavenie_skupin+"</h1>";
   var option="";
   var selected1="";
   var selected2="";
@@ -253,23 +254,31 @@ function zobraz_nastavenia()
   if(localStorage.pocet_postupujucich_tymov==2)selected2="selected";
   if(localStorage.pocet_postupujucich_tymov==4)selected4="selected";
   if(localStorage.pocet_postupujucich_tymov==8)selected8="selected";
-  string+="<label><div class=\"zapas-team\">Počet postupujúcich</div><div class=\"zapas-vysledok-select\"><select id=\"pocet_postupujucich\"><option value=\"1\" "+selected1+">1</option><option value=\"2\" "+selected2+">2</option><option value=\"4\" "+selected4+">4</option><option value=\"8\" "+selected8+">8</option>"+option+"</select></div></label>";
+  string+="<label><div class=\"zapas-team\">"+lang_pocet_postupujucich+"</div><div class=\"zapas-vysledok-select\"><select id=\"pocet_postupujucich\"><option value=\"1\" "+selected1+">1</option><option value=\"2\" "+selected2+">2</option><option value=\"4\" "+selected4+">4</option><option value=\"8\" "+selected8+">8</option>"+option+"</select></div></label>";
 
   var selected1="";
   var selected0="";
   if(localStorage.hra_sa_na_odvetu==1)selected1="selected";
   else if(localStorage.hra_sa_na_odvetu==0)selected0="selected"
-  string+="<label><div class=\"zapas-team\">Hrá sa na odvetu</div><div class=\"zapas-vysledok-select\"><select id=\"odveta\"><option value=\"1\" "+selected1+">Áno</option><option value=\"0\" "+selected0+">Nie</option></select></div></label>";
+  string+="<label><div class=\"zapas-team\">"+lang_hra_sa_na_odvetu+"</div><div class=\"zapas-vysledok-select\"><select id=\"odveta\"><option value=\"1\" "+selected1+">"+lang_ano+"</option><option value=\"0\" "+selected0+">"+lang_nie+"</option></select></div></label>";
   
   selected1="";
   selected0="";
   if(localStorage.nahodny_vyber_pri_play_off_turnaju==1)selected1="selected";
   else if(localStorage.nahodny_vyber_pri_play_off_turnaju==0)selected0="selected"
-  string+="<label><div class=\"zapas-team\">Náhodne play-off v turnaji</div><div class=\"zapas-vysledok-select\"><select id=\"nahodny_vyber\"><option value=\"1\" "+selected1+">Áno</option><option value=\"0\" "+selected0+">Nie</option></select></div></label>";
+  string+="<label><div class=\"zapas-team\">"+lang_nahodne_play_off_v_turnaji+"</div><div class=\"zapas-vysledok-select\"><select id=\"nahodny_vyber\"><option value=\"1\" "+selected1+">"+lang_ano+"</option><option value=\"0\" "+selected0+">"+lang_nie+"</option></select></div></label>";
   
-  string+="<br /><button onClick=\"odstran_vsetky_udaje();\" class=\"back\" style=\"width:100%;\">Pôvodné nastavenia</button><br>";
+  string+="<h1>"+lang_nastavenie_aplikacie+"</h1>";
+  var selectedsk="";
+  var selecteden="";
+  if(localStorage.lang=="sk")selectedsk="selected";
+  else if(localStorage.lang=="en")selecteden="selected"
+  string+="<label><div class=\"zapas-team\">"+lang_jazyk+"</div><div class=\"zapas-vysledok-select\"><select id=\"jazyk\"><option value=\"sk\" "+selectedsk+">Slovenký jazyk</option><option value=\"en\" "+selecteden+">English</option></select></div></label>";
   
-  string+="<button onClick=\"uloz_nastavenia();\" style=\"width:100%;\">Uložiť nastavenia</button>";
+  
+  string+="<br /><button onClick=\"odstran_vsetky_udaje();\" class=\"back\" style=\"width:100%;\">"+lang_povodne_nastavenia+"</button><br>";
+  
+  string+="<button onClick=\"uloz_nastavenia();\" style=\"width:100%;\">"+lang_ulozit_nastavenia+"</button>";
   obsah_stranky[8][1]=string;
   zobraz_podstranku('8');
 }
@@ -282,13 +291,41 @@ function uloz_nastavenia()
   localStorage.pocet_postupujucich_tymov=parseInt($('#pocet_postupujucich').val(), 10);
   localStorage.hra_sa_na_odvetu=parseInt($('#odveta').val(), 10);
   localStorage.nahodny_vyber_pri_play_off_turnaju=parseInt($('#nahodny_vyber').val(), 10);
+  localStorage.lang=$('#jazyk').val();
+  zmen_jazyk();
   zobraz_nastavenia();
   alert("Nastavenia boli úspešne zmenené.");
 }
 
+function zmen_jazyk()
+{
+  ziskaj_popisy_v_jazyku();
+  update_podstranok();
+  vypis_tymy();
+  nastav_menu();
+}
+
+function update_podstranok()
+{
+  obsah_stranky=[
+  ["", "<div onClick=\"zobraz_podstranku('1');\" class=\"mainpage\"><img width=\"80%\" style=\"margin-top:20%;\" src=\"img/logo.png\"/><div class=\"home-button\">"+lang_vytvor_turnaj+"</div></div>"],
+  [""+lang_zvol_timy+"", ""],
+  [""+lang_novy_turnaj+"", ""],
+  [""+lang_tabulka+"", ""],
+  [""+lang_zapasy+"", ""],
+  [""+lang_pravidla+"", ""+lang_pravidla_sub+""],
+  [""+lang_o_aplikacii+"", ""+lang_o_aplikacii_sub+""],
+  [""+lang_vysledok+"", ""],
+  [""+lang_nastavenia+"", ""],
+  [""+lang_turnaje+"", ""],
+  [""+lang_statistiky_timov+"", ""],
+  ["", ""]
+];
+}
+
 function odstran_vsetky_udaje()
 {
-  if(!confirm("Pri tejto operácii sa odstránia všetky údaje o doterajších turnajoch, týmoch a zápasoch. Chcete pokračovať?"))return false;
+  if(!confirm(""+lang_povodne_nastavenia_confirm+""))return false;
   localStorage.pocet_bodov_za_vyhru=3;
   localStorage.pocet_bodov_za_remizu=1;
   localStorage.pocet_bodov_za_prehru=0;
@@ -308,12 +345,13 @@ function odstran_vsetky_udaje()
   zacaty_turnaj=0;
   nastav_menu();
   
-  alert("Pôvodné nastavenia boli nastavené.");
+  alert(""+lang_povodne_nastavenia_alert+"");
 }
 
 /*nastavenie menu ci je rozohraty turnaj a ma zobrazovat tabulku a zapasy alebo nie*/
 function nastav_menu()
 {
+  nastav_popisy_v_menu();
   if(zacaty_turnaj==0)
   {
     $("#menu-2").css({"display":"none"});
@@ -324,6 +362,19 @@ function nastav_menu()
     $("#menu-2").css({"display":"block"});
     $("#menu-3").css({"display":"block"});
   }
+}
+
+function nastav_popisy_v_menu()
+{
+  $("#menu-nazov").html(lang_stolny_futbal);
+  $("#menu-1").html(lang_novy_turnaj);
+  $("#menu-2").html(lang_tabulka);
+  $("#menu-3").html(lang_zapasy);
+  $("#menu-4").html(lang_turnaje);
+  $("#menu-5").html(lang_statistiky_timov);
+  $("#menu-6").html(lang_pravidla);
+  $("#menu-7").html(lang_nastavenia);
+  $("#menu-8").html(lang_o_aplikacii);
 }
 
 /*funkcia na otvorenie menu*/
@@ -363,7 +414,7 @@ function vypis_tymy()
     else checked="";
     stranka=stranka+"<label><div class=\"team\"><input type=\"checkbox\" class=\"team-check\" id=\""+tymy[i][1]+"\" "+checked+"/>"+tymy[i][0]+"</div></label>";
   }
-  stranka=stranka+"<div class=\"add-input\"><input type=\"text\" id=\"add_team_text\" placeholder=\"Pridať team\"></input><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></div>";
+  stranka=stranka+"<div class=\"add-input\"><input type=\"text\" id=\"add_team_text\" placeholder=\""+lang_pridat_team+"\"></input><div id=\"add_team\" class=\"add-submit\" onClick=\"pridaj_team();\"><p>+</p></div></div>";
   obsah_stranky[1][1]=stranka;
 }
 
@@ -420,7 +471,7 @@ function vypln_hodnoty_turnaja()
     if(vytvor_turnaj_pocet_skupin==8)skupiny8="selected";
   }
   
-  obsah_stranky[2][1]="<input type=\"text\" maxlength=\"50\" name=\"nazov_turnaja\" id=\"nazov_turnaja\" placeholder=\"Názov turnaja\" value=\""+vytvor_turnaj_nazov+"\"/><select onChange=\"zobraz_pocet_skupin()\" name=\"typ_turnaju\" id=\"typ_turnaju\"><option value=\"liga\" "+liga+">Liga</option><option value=\"play_off\" "+play_off+">Play off</option><option value=\"turnaj\" "+turnaj+">Turnaj</option></select><select id=\"pocet_skupin\" class=\"pocet_skupin\" name=\"pocet_skupin\"><option value=\"1\" "+skupiny1+">1</option><option value=\"2\" "+skupiny2+">2</option><option value=\"4\" "+skupiny4+">4</option><option value=\"8\" "+skupiny8+">8</option></select><button id=\"spat_vyber_teamov\" style=\"width\"20%\" class=\"back\" onclick=\"spat_na_vyber_tymov();\">späť</button><button id=\"spat_vyber_teamov\" style=\"width:75%;\" onClick=\"generovat_turnaj();\">Generovať turnaj</button>";
+  obsah_stranky[2][1]="<input type=\"text\" maxlength=\"50\" name=\"nazov_turnaja\" id=\"nazov_turnaja\" placeholder=\""+lang_nazov_turnaja+"\" value=\""+vytvor_turnaj_nazov+"\"/><select onChange=\"zobraz_pocet_skupin()\" name=\"typ_turnaju\" id=\"typ_turnaju\"><option value=\"liga\" "+liga+">"+lang_liga+"</option><option value=\"play_off\" "+play_off+">"+lang_play_off+"</option><option value=\"turnaj\" "+turnaj+">"+lang_turnaj+"</option></select><select id=\"pocet_skupin\" class=\"pocet_skupin\" name=\"pocet_skupin\"><option value=\"1\" "+skupiny1+">1</option><option value=\"2\" "+skupiny2+">2</option><option value=\"4\" "+skupiny4+">4</option><option value=\"8\" "+skupiny8+">8</option></select><button id=\"spat_vyber_teamov\" style=\"width\"20%\" class=\"back\" onclick=\"spat_na_vyber_tymov();\">"+lang_spat+"</button><button id=\"spat_vyber_teamov\" style=\"width:75%;\" onClick=\"generovat_turnaj();\">"+lang_generovat_turnaj+"</button>";
   
 
 }
@@ -893,15 +944,15 @@ function vypis_zapasy_aktualny_turnaj()
       {
         skupina=zapasy[i][7];
         if(skupina===undefined)skupina="";
-        if(skupina!="")skupina_write=" | Skupina "+skupina;
+        if(skupina!="")skupina_write=" | "+lang_skupina+" "+skupina;
         else skupina_write="";
         
         var onclick="zadaj_vysledok_zapasu("+zapasy[i][0]+")";
         if(pocitadlo==0)
         { 
           kolo_nazov=zapasy[i][2];
-          if(kolo_nazov==0)kolo_nazov="PREDKOLO";
-          else kolo_nazov=kolo_nazov+". KOLO";
+          if(kolo_nazov==0)kolo_nazov=""+lang_predkolo+"";
+          else kolo_nazov=kolo_nazov+". "+lang_kolo+"";
           string=string+"<h1>"+kolo_nazov+"</h1>";
         }
         if((zapasy[i][3].split("#tymid_")).length==2)
@@ -909,7 +960,7 @@ function vypis_zapasy_aktualny_turnaj()
           if($.isNumeric((zapasy[i][3].split("#tymid_"))[1]))
           {
             
-            nazov_tym1="Víťaz zápasu "+(parseInt((zapasy[i][3].split("#tymid_"))[1], 10)+1);
+            nazov_tym1=""+lang_vitaz_zapasu+" "+(parseInt((zapasy[i][3].split("#tymid_"))[1], 10)+1);
             onclick="";
           }
           else
@@ -928,7 +979,7 @@ function vypis_zapasy_aktualny_turnaj()
           if($.isNumeric((zapasy[i][4].split("#tymid_"))[1]))
           {
             
-            nazov_tym2="Víťaz zápasu "+(parseInt((zapasy[i][4].split("#tymid_"))[1], 10)+1);
+            nazov_tym2=""+lang_vitaz_zapasu+" "+(parseInt((zapasy[i][4].split("#tymid_"))[1], 10)+1);
             onclick="";
           }
           else
@@ -941,7 +992,7 @@ function vypis_zapasy_aktualny_turnaj()
         {
           nazov_tym2=ziskaj_nazov_tymu_z_id(zapasy[i][4]);
         }
-        string=string+"<div class=\"zapas\" onClick=\""+onclick+"\"><h3>Zápas č. "+(zapasy[i][0]+1)+""+skupina_write+"</h3><div class=\"zapas-team redteam\">"+nazov_tym1+"</div><div class=\"zapas-vysledok\">"+zapasy[i][5]+"</div><div class=\"zapas-team blueteam\">"+nazov_tym2+"</div><div class=\"zapas-vysledok\">"+zapasy[i][6]+"</div><br style=\"clear:both;\"/></div>";
+        string=string+"<div class=\"zapas\" onClick=\""+onclick+"\"><h3>"+lang_zapas_c+" "+(zapasy[i][0]+1)+""+skupina_write+"</h3><div class=\"zapas-team redteam\">"+nazov_tym1+"</div><div class=\"zapas-vysledok\">"+zapasy[i][5]+"</div><div class=\"zapas-team blueteam\">"+nazov_tym2+"</div><div class=\"zapas-vysledok\">"+zapasy[i][6]+"</div><br style=\"clear:both;\"/></div>";
         pocitadlo++;
       }
     }
@@ -981,7 +1032,7 @@ function vypis_zapasy_aktualny_turnaj()
       {
         nazov_tym2=ziskaj_nazov_tymu_z_id(zapasy[i][4]);
       }
-      string=string+"<div class=\"zapas\" onClick=\""+onclick+"\"><h3>Zápas č. "+(zapasy[i][0]+1)+"</h3><div class=\"zapas-team\">"+nazov_tym1+"</div><div class=\"zapas-vysledok\">"+zapasy[i][5]+"</div><div class=\"zapas-team\">"+nazov_tym2+"</div><div class=\"zapas-vysledok\">"+zapasy[i][6]+"</div><br style=\"clear:both;\"/></div>";
+      string=string+"<div class=\"zapas\" onClick=\""+onclick+"\"><h3>"+lang_zapas_c+" "+(zapasy[i][0]+1)+"</h3><div class=\"zapas-team\">"+nazov_tym1+"</div><div class=\"zapas-vysledok\">"+zapasy[i][5]+"</div><div class=\"zapas-team\">"+nazov_tym2+"</div><div class=\"zapas-vysledok\">"+zapasy[i][6]+"</div><br style=\"clear:both;\"/></div>";
     }
   }*/
   obsah_stranky[4][0]=aktualny_turnaj_nazov;
@@ -999,7 +1050,7 @@ function ziskaj_popis_tabulka_miesto(string)
     if(i!=0)poradie.push(parseInt(string[i], 10)+1);
   }
   poradie=poradie.join("");
-  return poradie+". tím skupiny "+skupina;
+  return poradie+". "+lang_tim_skupiny+" "+skupina;
 }
 
 function ziskaj_id_tymu(tym)
@@ -1213,7 +1264,7 @@ function vykresli_tabulku(pole)
   for(var i=0; i<aktualny_turnaj_pocet_skupin; i++)
   {
     if(aktualny_turnaj_pocet_skupin!=0 && aktualny_turnaj_typ=="turnaj")string+="<h2>"+String.fromCharCode(i+65)+" skupina</h2>";
-    string+="<table width=\"100%\"><tr><th>Č.</th><th>Team</th><th>Zap.</th><th>GF</th><th>GA</th><th>B</th></tr>";
+    string+="<table width=\"100%\"><tr><th>Č.</th><th>"+lang_tim+"</th><th>"+lang_zapasov+"</th><th>GF</th><th>GA</th><th>"+lang_body+"</th></tr>";
     for(var j=0; j<pole.length;j++)
     {
       //treba doplnit body a goly
@@ -1250,8 +1301,8 @@ function zadaj_vysledok_zapasu(vysledok)
     else selected="";
     option2=option2+"<option value=\""+i+"\" "+selected+">"+i+"</option>";
   }
-  string="<h3>Zápas č. "+(zapasy[vysledok][0]+1)+"</h3><div class=\"zapas\"><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][3])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_1_vysledok\">"+option1+"</select></div></label><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][4])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_2_vysledok\">"+option2+"</select></div></label><br style=\"clear:both;\"/></div>";
-  string=string+"<button id=\"spat_zapasy\" style=\"width\"20%\" class=\"back\" onclick=\"zobraz_podstranku(4);\">späť</button><button onClick=\"uloz_vysledok("+vysledok+")\" style=\"width:75%;\">Uložiť výsledok</button>";
+  string="<h3>"+lang_zapas_c+" "+(zapasy[vysledok][0]+1)+"</h3><div class=\"zapas\"><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][3])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_1_vysledok\">"+option1+"</select></div></label><label><div class=\"zapas-team\">"+ziskaj_nazov_tymu_z_id(zapasy[vysledok][4])+"</div><div class=\"zapas-vysledok-select\"><select id=\"tym_2_vysledok\">"+option2+"</select></div></label><br style=\"clear:both;\"/></div>";
+  string=string+"<button id=\"spat_zapasy\" style=\"width\"20%\" class=\"back\" onclick=\"zobraz_podstranku(4);\">"+lang_spat+"</button><button onClick=\"uloz_vysledok("+vysledok+")\" style=\"width:75%;\">"+lang_ulozit_vysledok+"</button>";
   obsah_stranky[7][1]=string;
   zobraz_podstranku(7);
 }
@@ -1260,7 +1311,7 @@ function uloz_vysledok(zapas)
 {
   if(aktualny_turnaj_typ=="play_off")
   {
-    if(!confirm("Zadanie výsledku ovplyvňuje zápasy v ďalších kolách turnaja. Zmeny nebudú vratné. Zadali ste správny výsledok?"))return false;
+    if(!confirm(""+lang_ulozit_vysledok_confirm+""))return false;
     var vitaz="";
     if($('#tym_1_vysledok').val()>$('#tym_2_vysledok').val())vitaz=zapasy[zapas][3];
     if($('#tym_1_vysledok').val()<$('#tym_2_vysledok').val())vitaz=zapasy[zapas][4];
@@ -1279,7 +1330,7 @@ function uloz_vysledok(zapas)
   {  
     if(zisti_ci_je_kompletna_skupinova_faza())
     {
-      if(!confirm("Zadanie výsledku ovplyvňuje zápasy v ďalších kolách turnaja. Zmeny nebudú vratné. Zadali ste správny výsledok?"))return false;
+      if(!confirm(""+lang_ulozit_vysledok_confirm+""))return false;
       for(var i=0; i<aktualny_turnaj_pocet_skupin;i++)
       {
         for(var j=0; j<localStorage.pocet_postupujucich_tymov;j++)
@@ -1292,7 +1343,7 @@ function uloz_vysledok(zapas)
       if($('#tym_1_vysledok').val()<$('#tym_2_vysledok').val())vitaz=zapasy[zapas][4];
       if(vitaz=="")
       {
-        alert("V play-off nesmie byť remíza!");
+        alert(""+lang_ulozit_vysledok_alert+"");
         return;
       }
       ovplyvni_ostatne_zapasy(zapasy[zapas][0], vitaz);
@@ -1359,12 +1410,12 @@ function zisti_ci_je_kompletna_skupinova_faza()
 function vypis_turnaje()
 {
   string="";
-  string+="<table width=\"100%\"><tr><th>Č.</th><th>Názov</th><th>Typ</th><th>Skupiny</th>";
+  string+="<table width=\"100%\"><tr><th>"+lang_cislo+"</th><th>"+lang_nazov+"</th><th>"+lang_typ+"</th><th>"+lang_skupiny+"</th>";
   for(var i=0; i<turnaje.length; i++)
   {
     string+="<tr onClick=\"nacitaj_turnaj("+(turnaje[i][0])+")\"><td>"+(turnaje[i][0]+1)+"</td><td>"+turnaje[i][1]+"</td><td>"+turnaje[i][2]+"</td><td>"+turnaje[i][3]+"</td></tr>";
   }
-  if(i==0)string+="<tr><td colspan=\"4\">Žiadne turnaje</td></tr>"
+  if(i==0)string+="<tr><td colspan=\"4\">"+lang_ziadne_turnaje+"</td></tr>"
   string+="</table>";
   obsah_stranky[9][1]=string;
   zobraz_podstranku(9);
@@ -1398,12 +1449,12 @@ function vypis_statistiky_timov()
 function vrat_statistiky_timov(tabulka)
 {
   string="";
-  string+="<table width=\"100%\"><tr><th>Č.</th><th>Team</th><th>Záp.</th><th>GF</th><th>GA</th><th>B</th>";
+  string+="<table width=\"100%\"><tr><th>"+lang_cislo+"</th><th>"+lang_tim+"</th><th>"+lang_zapasov+"</th><th>GF</th><th>GA</th><th>"+lang_body+"</th>";
   for(var i=0; i<tabulka.length; i++)
   {
     string+="<tr onClick=\"vypis_statistika_team("+(i)+")\"><td>"+(i+1)+"</td><td>"+(tabulka[i][0])+"</td><td>"+tabulka[i][2]+"</td><td>"+tabulka[i][3]+"</td><td>"+tabulka[i][4]+"</td><td>"+tabulka[i][8]+"</td></tr>";
   }
-  if(i==0)string+="<tr><td colspan=\"6\">Žiadne tímy</td></tr>"
+  if(i==0)string+="<tr><td colspan=\"6\">"+lang_ziadne_turnaje+"</td></tr>"
   string+="</table>";
   return string;
 }
@@ -1416,19 +1467,19 @@ function vypis_statistika_team(id)
 
   string="";
   string+="<table width=\"100%\">";
-  string+="<tr><th colspan=\"2\">Štatistiky</th>";
-  string+="<tr><td>Nazov</td><td>"+tabulka[id][0]+"</td>";
+  string+="<tr><th colspan=\"2\">"+lang_statistiky+"</th>";
+  string+="<tr><td>"+lang_nazov+"</td><td>"+tabulka[id][0]+"</td>";
   string+="<tr><td>ID</td><td>"+tabulka[id][1]+"</td>";
-  string+="<tr><td>Počet odohraných zápasov</td><td>"+tabulka[id][2]+"</td>";
-  string+="<tr><td>Počet daných gólov</td><td>"+tabulka[id][3]+"</td>";
-  string+="<tr><td>Počet dostaných gólov</td><td>"+tabulka[id][4]+"</td>";
-  string+="<tr><td>Bilancia gólov</td><td>"+(tabulka[id][3]-tabulka[id][4])+"</td>";
-  string+="<tr><td>Počet víťazstiev</td><td>"+tabulka[id][5]+"</td>";
-  string+="<tr><td>Počet remíz</td><td>"+tabulka[id][6]+"</td>";
-  string+="<tr><td>Počet prehier</td><td>"+tabulka[id][7]+"</td>";
-  string+="<tr><td>Celkový počet bodov</td><td>"+tabulka[id][8]+"</td>";
+  string+="<tr><td>"+lang_pocet_odohranych_zapasov+"</td><td>"+tabulka[id][2]+"</td>";
+  string+="<tr><td>"+lang_pocet_danych_golov+"</td><td>"+tabulka[id][3]+"</td>";
+  string+="<tr><td>"+lang_pocet_dostanych_golov+"</td><td>"+tabulka[id][4]+"</td>";
+  string+="<tr><td>"+lang_bilancia_golov+"</td><td>"+(tabulka[id][3]-tabulka[id][4])+"</td>";
+  string+="<tr><td>"+lang_pocet_vitazstiev+"</td><td>"+tabulka[id][5]+"</td>";
+  string+="<tr><td>"+lang_pocet_remiz+"</td><td>"+tabulka[id][6]+"</td>";
+  string+="<tr><td>"+lang_pocet_prehier+"</td><td>"+tabulka[id][7]+"</td>";
+  string+="<tr><td>"+lang_pocet_bodov+"</td><td>"+tabulka[id][8]+"</td>";
   string+="</table>";
-  string+="<button onClick=\"zobraz_podstranku(10);\" style=\"width:100%;\">späť</button>";
+  string+="<button onClick=\"zobraz_podstranku(10);\" style=\"width:100%;\">"+lang_spat+"</button>";
   obsah_stranky[11][1]=string;
   zobraz_podstranku(11);
 }
