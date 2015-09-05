@@ -74,6 +74,7 @@ var neni_zadany_nazov_turnaja="";
 var lang_tym_uz_existuje="";
 var lang_pridaj_team_1="";
 var lang_pridaj_team_2="";
+var lang_pocet_skupin="";
 
 function ziskaj_popisy_v_jazyku()
 {
@@ -174,6 +175,7 @@ function ziskaj_popisy_v_jazyku()
     lang_tym_uz_existuje="Tím s takýmto názvom už existuje";
     lang_pridaj_team_1="Naozaj chcete pridať tím ";
     lang_pridaj_team_2="? Editácia názvu po pridaní tímu nebude možná.";
+    lang_pocet_skupin="Počet skupín";
   }
   else if(localStorage.lang=="en")
   {
@@ -270,5 +272,6 @@ function ziskaj_popisy_v_jazyku()
     lang_tym_uz_existuje="Team already exists.";
     lang_pridaj_team_1="Are you sure you want to add team ";
     lang_pridaj_team_2="? You want be able to edit team after addition";
+    lang_pocet_skupin="Number of groups";
   }
 }
