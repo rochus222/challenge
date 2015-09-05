@@ -62,7 +62,7 @@ function zobraz_nastavenia()
   var selecteden="";
   if(localStorage.lang=="sk")selectedsk="selected";
   else if(localStorage.lang=="en")selecteden="selected"
-  string+="<label><div class=\"zapas-team\">"+lang_jazyk+"</div><div class=\"zapas-vysledok-select\"><select id=\"jazyk\"><option value=\"sk\" "+selectedsk+">Slovenký jazyk</option><option value=\"en\" "+selecteden+">English</option></select></div></label>";
+  string+="<label><div class=\"zapas-team\" style=\"width:46%\">"+lang_jazyk+"</div><div class=\"zapas-vysledok-select\" style=\"width:50%\"><select id=\"jazyk\"><option value=\"sk\" "+selectedsk+">Slovenský</option><option value=\"en\" "+selecteden+">English</option></select></div></label>";
   
   
   string+="<br /><button onClick=\"odstran_vsetky_udaje();\" class=\"back\" style=\"width:100%;\">"+lang_povodne_nastavenia+"</button><br>";
