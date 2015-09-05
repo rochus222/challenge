@@ -36,9 +36,6 @@ function otvor_menu()
   $("#clona").animate({"opacity":"1"},400);
   $("#menu-open").css({"-webkit-transform": "translate(-50px,0px)","transform": "translate(-50px,0px)"});
   setTimeout(function () {$("#menu-content").css({"-webkit-transform": "translate(100%,0px)","transform": "translate(100%,0px)"});},100);
-  /*$("#menu-open").animate({"left":"-50px"},100, "linear", function(){
-    $("#menu-content").animate({"left": "0%"},300);
-  });*/
 }
 
 /*funkcia na zatvorenie menu*/
@@ -51,9 +48,6 @@ function zatvor_menu()
     $("#menu-open").css({"-webkit-transform": "translate(0px,0px)","transform": "translate(0px,0px)"});
     $("#clona").css({"left":"-100%"});
   },300);
-  /*$("#menu-content").animate({"left": "-80%"},300,"linear",function(){
-    $("#menu-open").animate({"left":"0px"},100,"linear",function(){$("#clona").css({"left":"-100%"});});
-  });*/
 }
 
 /*funkcia na vlozenie obsahu na stranku z dat ulozenych v pole*/
