@@ -535,10 +535,15 @@ function generovat_turnaj()
   }
   start_loading();
   uloz_udaje_turnaja();
+  
+  if(!funkcie_pri_generovani())
+  {
+    stop_loading();
+    return false;
+  }
+  
   zacaty_turnaj=1;
   nastav_menu(); 
-  
-  funkcie_pri_generovani()
   
   zobraz_podstranku(4);
   stop_loading();
@@ -552,15 +557,18 @@ function funkcie_pri_generovani()
   turnaje.push([(turnaje.length),aktualny_turnaj_nazov,aktualny_turnaj_typ,aktualny_turnaj_pocet_skupin,localStorage.pocet_bodov_za_vyhru,localStorage.pocet_bodov_za_remizu,localStorage.pocet_bodov_za_prehru]);
   aktualny_turnaj_id=turnaje.length-1;
   
-  if(aktualny_turnaj_typ=="liga")vygeneruj_turnaj_liga();
-  if(aktualny_turnaj_typ=="play_off")vygeneruj_turnaj_play_off();
-  if(aktualny_turnaj_typ=="turnaj")vygeneruj_turnaj_turnaj();
+  var spravne_generovanie;
+  if(aktualny_turnaj_typ=="liga")spravne_generovanie=vygeneruj_turnaj_liga();
+  if(aktualny_turnaj_typ=="play_off")spravne_generovanie=vygeneruj_turnaj_play_off();
+  if(aktualny_turnaj_typ=="turnaj")spravne_generovanie=vygeneruj_turnaj_turnaj();
+  if(spravne_generovanie==false)return false;
   
   localStorage.turnajevpamati=JSON.stringify(turnaje);
   localStorage.zapasyvpamati=JSON.stringify(zapasy);
   
   var tabulka=ziskaj_tabulku_podla_zapasov();
   vykresli_tabulku(zorad_tabulku_podla_bodov(tabulka));
+  return true;
 }
 
 function presun_z_vytvor_do_aktual()
@@ -591,6 +599,11 @@ function vygeneruj_turnaj_liga()
   var watchdog=0;
   var chod_od_znova=0;
   var pocet_tymov=ziskaj_pocet_tymov_aktualneho_turnaju();
+  if(pocet_tymov==1)
+  {
+    alert(""+lang_malo_timov+"");
+    return false;
+  }
   var pocet_watchdog=1000;
   var watchdog_over=0;
   var pocet_watchdog_over=50;
@@ -638,6 +651,7 @@ function vygeneruj_turnaj_liga()
     }
   }
   vypis_zapasy_aktualny_turnaj();
+  return true;
 }
 
 function odstran_zapasy_turnaja(turnaj)
@@ -678,6 +692,12 @@ function vygeneruj_turnaj_play_off()
   var tym2;
   var pocet_tymov=ziskaj_pocet_tymov_aktualneho_turnaju();
 
+  if(pocet_tymov==1)
+  {
+    alert(""+lang_malo_timov+"");
+    return false;
+  }
+  
   var pom=2;
   while(pom<=pocet_tymov)
   {
@@ -750,7 +770,7 @@ function vygeneruj_turnaj_play_off()
     i++;
   }
   vypis_zapasy_aktualny_turnaj();
-  
+  return true;
 }
 
 function vygeneruj_turnaj_turnaj()
@@ -914,6 +934,7 @@ function vygeneruj_turnaj_turnaj()
     if(pocet_tymov=2)break;   
   }
   vypis_zapasy_aktualny_turnaj();
+  return true;
 }
 
 function tymy_su_v_tej_istej_skupine(tym1, tym2)
@@ -1274,7 +1295,6 @@ function ziskaj_tabulku_podla_zapasov(all)
     }
     if (pocitadlo>0)vysledne_pole.push([ziskaj_nazov_tymu_z_id(id_tymu), id_tymu, odohrane, goly_dane, goly_dostane, vitazstva, remizy, prehry, body,skupina]);
   }
-  alert(vysledne_pole);
   return vysledne_pole;
 }
 
