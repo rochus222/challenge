@@ -1189,11 +1189,13 @@ function ziskaj_tabulku_podla_zapasov(all)
   var vitazstva=0;
   var prehry=0;
   var remizy=0;
-  var skupina=""
-  var vysledne_pole=[]
+  var skupina="";
+  var pocitadlo=0;
+  var vysledne_pole=[];
   pole=zorad_tabulku_podla_abecedy();
   for(var i=0; i<pole.length; i++)
   {
+    pocitadlo=0;
     goly_dane=0;
     goly_dostane=0;
     body=0;
@@ -1209,6 +1211,7 @@ function ziskaj_tabulku_podla_zapasov(all)
       {
         if(zapasy[j][3]==id_tymu)
         {
+          pocitadlo++;
           if(zapasy[j][7]!=undefined && all!=1)skupina=zapasy[j][7];
           if(skupina!=""&&zapasy[j][7]==undefined && all!=1)continue;
         
@@ -1239,6 +1242,7 @@ function ziskaj_tabulku_podla_zapasov(all)
         }
         else if(zapasy[j][4]==id_tymu)
         {
+          pocitadlo++;
           if(zapasy[j][7]!=undefined)skupina=zapasy[j][7];
           if(skupina!=""&&zapasy[j][7]==undefined)continue;
         
@@ -1268,8 +1272,9 @@ function ziskaj_tabulku_podla_zapasov(all)
         }
       }
     }
-    vysledne_pole[i]=[ziskaj_nazov_tymu_z_id(id_tymu), id_tymu, odohrane, goly_dane, goly_dostane, vitazstva, remizy, prehry, body,skupina];
+    if (pocitadlo>0)vysledne_pole.push([ziskaj_nazov_tymu_z_id(id_tymu), id_tymu, odohrane, goly_dane, goly_dostane, vitazstva, remizy, prehry, body,skupina]);
   }
+  alert(vysledne_pole);
   return vysledne_pole;
 }
 
