@@ -165,7 +165,7 @@ function ziskaj_popisy_v_jazyku()
     lang_malo_timov="Na generovanie turnaja nie je dostatočný počet týmov";
     lang_nastavenia_boli_zmenene="Nastavenia boli úspešne zmenené.";
     
-    lang_zobraz_velke_vysledky="Zobraz výsledkovú tabuľku";
+    lang_zobraz_velke_vysledky="Zobraz veľké výsledky";
     lang_uloz_aktualny_vysledok="Save";
     lang_aktualny_turnaj="Aktuálny turnaj";
     lang_aktualne_zapasy="Aktuálne zápasy";
