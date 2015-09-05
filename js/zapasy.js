@@ -83,7 +83,7 @@ function zadaj_vysledok_zapasu(vysledok)
   var option1="<option value=\"-\">-</option>";
   var option2="<option value=\"-\">-</option>";
   var selected;
-  for(var i=0;i<21;i++)
+  for(var i=0;i<101;i++)
   {
     if(zapasy[vysledok][5]==i)selected="selected";
     else selected="";
