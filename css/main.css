@@ -183,8 +183,8 @@ p
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  -webkit-transition:all 0.1s ease-in-out;
-  transition:all 0.1s ease-in-out;
+  -webkit-transition:all 0.1s linear;
+  transition:all 0.1s linear;
 }
 
 .menu-content
@@ -200,8 +200,8 @@ p
   padding-bottom:20px;
   z-index:2000;
   border-bottom-right-radius:20px;
-  -webkit-transition:all 0.3s ease-in-out;
-  transition:all 0.3s ease-in-out;
+  -webkit-transition:all 0.3s linear;
+  transition:all 0.3s linear;
 }
 
 .menu-content h1
@@ -239,6 +239,8 @@ p
   position:fixed;
   top:0;
   z-index:1000;
+  -webkit-transition:opacity 0.4s linear;
+  transition:opacity 0.4s linear;
 }
 
 .mainpage

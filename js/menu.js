@@ -33,7 +33,7 @@ function otvor_menu()
 {
   otvorene_menu=1;
   $("#clona").css({"left":"0"});
-  $("#clona").animate({"opacity":"1"},400);
+  $("#clona").css({"opacity":"1"});
   $("#menu-open").css({"-webkit-transform": "translate(-50px,0px)","transform": "translate(-50px,0px)"});
   setTimeout(function () {$("#menu-content").css({"-webkit-transform": "translate(100%,0px)","transform": "translate(100%,0px)"});},100);
 }
@@ -42,7 +42,7 @@ function otvor_menu()
 function zatvor_menu()
 {
   otvorene_menu=0;
-  $("#clona").animate({"opacity":"0"},400);
+  $("#clona").css({"opacity":"0"});
   $("#menu-content").css({"-webkit-transform": "translate(-100%,0px)","transform": "translate(-100%,0px)"});
   setTimeout(function () {
     $("#menu-open").css({"-webkit-transform": "translate(0px,0px)","transform": "translate(0px,0px)"});
