@@ -1,4 +1,5 @@
 /*nastavenia*/
+//zobraz podstranku nastaveni
 function zobraz_nastavenia()
 {
   var option="";
@@ -72,6 +73,7 @@ function zobraz_nastavenia()
   zobraz_podstranku('8');
 }
 
+//uloz jednotlive nastavenia do premennych
 function uloz_nastavenia()
 {
   localStorage.pocet_bodov_za_vyhru=parseInt($('#body_vyhra').val(), 10);
@@ -81,11 +83,14 @@ function uloz_nastavenia()
   localStorage.hra_sa_na_odvetu=parseInt($('#odveta').val(), 10);
   localStorage.nahodny_vyber_pri_play_off_turnaju=parseInt($('#nahodny_vyber').val(), 10);
   localStorage.lang=$('#jazyk').val();
+  //nastav jazyk
   zmen_jazyk();
+  //refresh podstranky
   zobraz_nastavenia();
   alert(""+lang_nastavenia_boli_zmenene+"");
 }
 
+//vynulovanie vsetkych poli a nastavenie predvolenych hodnot
 function odstran_vsetky_udaje()
 {
   if(!confirm(""+lang_povodne_nastavenia_confirm+""))return false;

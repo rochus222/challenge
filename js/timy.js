@@ -1,3 +1,4 @@
+/*vypise timi do podstranky zvol timy*/
 function vypis_tymy()
 {
   var stranka="";
@@ -12,6 +13,7 @@ function vypis_tymy()
   obsah_stranky[1][1]=stranka;
 }
 
+/*funkcia na pridanie timu - kontroluje ci uz tim existuje a uklada aj do internej pamate*/
 function pridaj_team()
 {
   vloz_tymy_do_aktualneho_turnaju();
@@ -31,6 +33,7 @@ function pridaj_team()
   zobraz_podstranku(1);
 }
 
+/*zisti ci team uz existuje*/
 function uz_team_existuje(team_popis)
 {
   var pocitadlo=0;
@@ -42,6 +45,7 @@ function uz_team_existuje(team_popis)
   else return false;
 }
 
+/*nastavenim pola vlozi timy do aktualneho turnaju*/
 function vloz_tymy_do_aktualneho_turnaju()
 {
   for(var i=0; i<tymy.length;i++)
@@ -51,6 +55,7 @@ function vloz_tymy_do_aktualneho_turnaju()
   }
 }
 
+/*vypise statistiky timov*/
 function vypis_statistiky_timov()
 {
   var tabulka=ziskaj_tabulku_podla_zapasov(1);
@@ -58,6 +63,7 @@ function vypis_statistiky_timov()
   zobraz_podstranku(10);
 }
 
+/*vracia statistiky timov podla tabulky*/
 function vrat_statistiky_timov(tabulka)
 {
   string="";
@@ -72,6 +78,7 @@ function vrat_statistiky_timov(tabulka)
   return string;
 }
 
+/*vypise rozsirene statistiky timu*/
 function vypis_statistika_team(id)
 {
   var tabulka=ziskaj_tabulku_podla_zapasov(1);
@@ -97,6 +104,7 @@ function vypis_statistika_team(id)
   zobraz_podstranku(11);
 }
 
+/*vypise rozsirene statistiky timu v aktualnom turnaji*/
 function vypis_statistika_team_aktualny_turnaj(id)
 {
   var tabulka=ziskaj_tabulku_podla_zapasov();

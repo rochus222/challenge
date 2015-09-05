@@ -22,6 +22,7 @@ function generovat_turnaj()
   stop_loading();
 }
 
+//funkcie, ktore sa volaju pri generovani
 function funkcie_pri_generovani()
 {
   presun_z_vytvor_do_aktual();
@@ -44,6 +45,7 @@ function funkcie_pri_generovani()
   return true;
 }
 
+//ulozenie vsetkych vytvor_ premennych do premennych aktualny_
 function presun_z_vytvor_do_aktual()
 {
   aktualny_turnaj_nazov=vytvor_turnaj_nazov;
@@ -55,6 +57,7 @@ function presun_z_vytvor_do_aktual()
   vytvor_turnaj_pocet_skupin="";
 }
 
+//ulozenie tymov nastavenim [3] miesta v matici
 function ulozit_tymy_aktualneho_turnaju()
 {
   for(var i=0; i<tymy.length;i++)
@@ -65,6 +68,10 @@ function ulozit_tymy_aktualneho_turnaju()
   }
 }
 
+//generovanie ligy
+/*vypocita sa pocet kol a nasledne sa kazde kolo naplna zapasmi s tym, ze sa kontroluje, ci uz tym v kole hral, alebo ci uz zapas existuje
+watchdog je nastaveny na to, ak pride k situacii ze uz sa neda v kole vymysliet zapas ktory este nebol tak sa ete raz vygeneruje kolo
+watchdog_over funguje tak ze ked nijako sa to kolo vygenerovat neda tak este raz skusi vygenerovat ligu... nutne pre generovanie 12 a viac timov*/
 function vygeneruj_turnaj_liga()
 {
   var tym1;
@@ -85,9 +92,7 @@ function vygeneruj_turnaj_liga()
   if(localStorage.hra_sa_na_odvetu==0)pocet_kol=pocet_kol/2;
   for(var i=0; i<pocet_kol; i++)
   {
-    //alert(watchdog+" "+zapasy);
     chod_od_znova=0;
-    //alert(i+" "+pocet_kol);
     for(var j=0; j<Math.floor(pocet_tymov/2); j++)
     {
       watchdog=0;
@@ -107,7 +112,6 @@ function vygeneruj_turnaj_liga()
             vygeneruj_turnaj_liga();
             return 0;
           }
-          //alert("ok");
           odstran_zapasy_turnaja_a_kola(aktualny_turnaj_id,i+1);
           chod_od_znova=1;
           break;
@@ -115,7 +119,6 @@ function vygeneruj_turnaj_liga()
       }
       if(chod_od_znova==1)break;
       zapasy.push([zapasy.length, aktualny_turnaj_id, i+1, ziskaj_id_tymu(tym1), ziskaj_id_tymu(tym2),"-","-"]);
-      //alert(ziskaj_id_tymu(tym1)+" "+ziskaj_id_tymu(tym2));
     }
     if(chod_od_znova==1)
     {
@@ -127,6 +130,7 @@ function vygeneruj_turnaj_liga()
   return true;
 }
 
+//odstranovanie zapasov turnaja ak pretece watchdog aby sa odznova mohlo generovat
 function odstran_zapasy_turnaja(turnaj)
 {
   var zapasy_old=[];
@@ -143,6 +147,7 @@ function odstran_zapasy_turnaja(turnaj)
   zapasy=zapasy_old;
 }
 
+//to iste len iba pri kole
 function odstran_zapasy_turnaja_a_kola(turnaj,kolo,tabulka)
 {
   var zapasy_old=[];
@@ -159,6 +164,7 @@ function odstran_zapasy_turnaja_a_kola(turnaj,kolo,tabulka)
   zapasy=zapasy_old;
 }
 
+/*najprv sa zisti kolko timov moze hrat a vytvori sa predkolo. nasledne sa do tymy_po_kole ulozia timy ktore ostali a z nich sa zgrupovanim vytvori pavuk playy-off*/
 function vygeneruj_turnaj_play_off()
 {
   var tym1;
@@ -246,6 +252,7 @@ function vygeneruj_turnaj_play_off()
   return true;
 }
 
+/*cista kombinacia ligy a play-off, pricom pri lige sa este generuje viac skupin, kedze ide o turnaj*/
 function vygeneruj_turnaj_turnaj()
 {
   var tym1;

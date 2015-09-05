@@ -1,9 +1,9 @@
+/*vypis vsetkych zapasov v aktualnom turnaji, pricom sa vykresluje po kolach - kazde kolo sa prebehne pole zapasy a nasledne sa vypisu zapasy ktore v kole hrali (dolezite kvoli turnaju)*/
 function vypis_zapasy_aktualny_turnaj()
 {
   var kolo=-1;
   var predchadzajuce_kolo=-1;
   var string="";
-  //var string+="<button id=\"spat_v_turnaji\" class=\"back2\">&#x25c4;</button><button id=\"dalej_v_turnaji\" class=\"next\">&#x25ba;</button>";
   var pocitadlo=0;
   var kolo=0;
   var skupina="";
@@ -78,6 +78,7 @@ function vypis_zapasy_aktualny_turnaj()
   obsah_stranky[4][1]=string;
 }
 
+/*vykreslenie podstranky na zadanie vysledku*/
 function zadaj_vysledok_zapasu(vysledok)
 {
   var option1="<option value=\"-\">-</option>";
@@ -100,6 +101,7 @@ function zadaj_vysledok_zapasu(vysledok)
   zobraz_podstranku(7);
 }
 
+/*vykreslenie velkej tabuly na zapis vysledkov*/
 var je_zobrazena_tabulka_vysledkov_zapasu=0;
 function zobraz_tabulku_vysledkov(zapas)
 {
@@ -121,6 +123,7 @@ function zobraz_tabulku_vysledkov(zapas)
   $("#vysledok2").attr("onClick", "daj_gol(2,"+zapas+")");
 }
 
+/*zatvorenie velkej tabulky*/
 function zavri_tabulku_vysledkov(zapas)
 {
   $("#vysledky").css({"display":"none"});
@@ -128,6 +131,7 @@ function zavri_tabulku_vysledkov(zapas)
   je_zobrazena_tabulka_vysledkov_zapasu=0;
 }
 
+/*inkrementacia velkej tabulky ak je kliknute na jeden z timov*/
 function daj_gol(tym,zapas)
 {
   var golov1=$('#tym_1_vysledok').val();
@@ -155,6 +159,7 @@ function daj_gol(tym,zapas)
   $("#vysledok2 p").css({"margin-top":((sirka_displeja-vyskapisma-vyskazavri)/2)+"px"});
 }
 
+/*ulozenie vysledku zapasu pricom ak ide o play-off sa nasledne v [8] zakaze zmena vysledku a pri turnaji sa zakaze zmena zapasov v skupinach ked su vsetky zapasy odohrate*/
 function uloz_vysledok(zapas)
 {
   if(aktualny_turnaj_typ=="play_off")
@@ -216,6 +221,7 @@ function uloz_vysledok(zapas)
   zobraz_podstranku(4);
 }
 
+/*zakazanie zmeny zapasov v tabulkach*/
 function zakaz_zmenu_zapasov_v_tabulkach()
 {
   for(var i=0; i<zapasy.length; i++)
@@ -227,6 +233,7 @@ function zakaz_zmenu_zapasov_v_tabulkach()
   }
 }
 
+/*na ziskanie tymu z tabulky podla poradia a skupiny*/
 function ziskaj_tym_z_tabulky(skupina, poradie)
 {
   var pocitadlo=0;
@@ -245,6 +252,7 @@ function ziskaj_tym_z_tabulky(skupina, poradie)
   }
 }
 
+/*ovplyvnenie ostatnych zapasov - vlozenie vitaza aktualneho zapasu do nasledujucich pri play-off faze*/
 function ovplyvni_ostatne_zapasy(zapas, vitaz)
 {
   
@@ -261,6 +269,7 @@ function ovplyvni_ostatne_zapasy(zapas, vitaz)
   }
 }
 
+/*zistenie kompletnosti skupinovej fazy pri turnaji*/
 function zisti_ci_je_kompletna_skupinova_faza()
 {
   var pocitadlo=0;

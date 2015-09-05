@@ -1,4 +1,5 @@
 /*LOADING*/
+//riesenie otvorenia a zatvorenia loadingu z ggrafickeho hladiska
 var loading_rotate;
 var loading_uhol=0;
 function start_loading()

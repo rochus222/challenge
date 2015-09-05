@@ -1,6 +1,7 @@
 /*nastavenie menu ci je rozohraty turnaj a ma zobrazovat tabulku a zapasy alebo nie*/
 function nastav_menu()
 {
+  //nastavenie popisov podla jazyka
   nastav_popisy_v_menu();
   if(zacaty_turnaj==0)
   {
@@ -14,6 +15,7 @@ function nastav_menu()
   }
 }
 
+//zmeni popisy podla aktualnych premennych lang_...
 function nastav_popisy_v_menu()
 {
   $("#menu-nazov").html(lang_stolny_futbal);

@@ -1,3 +1,4 @@
+//prechod medzi podstrankou kde sa volia timy na podstranku kde sa zadavaju udaje turnaja
 function zadanie_udajov_turnaja()
 {
   vloz_tymy_do_aktualneho_turnaju();
@@ -6,6 +7,7 @@ function zadanie_udajov_turnaja()
   zobraz_pocet_skupin();
 }
 
+//zobrazenie podstranky nazadavanie udajov turnaja
 function vypln_hodnoty_turnaja()
 {
   var liga="";
@@ -34,12 +36,14 @@ function vypln_hodnoty_turnaja()
 
 }
 
+//zobrazenie poctu skupin ak je turnaj turnaj
 function zobraz_pocet_skupin()
 {
   if($('#typ_turnaju').val()=="turnaj")$('#pocet_skupin').css({"display":"block"});
   else $('#pocet_skupin').css({"display":"none"});
 }
 
+//ak sa vracia zo zadavania udajov spat k vyberu timov, aby sa nestratili informacie
 function spat_na_vyber_tymov()
 {
   uloz_udaje_turnaja();
@@ -47,6 +51,7 @@ function spat_na_vyber_tymov()
   zobraz_podstranku(1);
 }
 
+//ukladanie udajov turnaja
 function uloz_udaje_turnaja()
 {
   vytvor_turnaj_nazov=$('#nazov_turnaja').val();
@@ -54,7 +59,7 @@ function uloz_udaje_turnaja()
   vytvor_turnaj_pocet_skupin=$('#pocet_skupin').val();
 }
 
-
+//vypis vsetkych turnajov z pola turnaje na podstranku turnaje
 function vypis_turnaje()
 {
   string="";
@@ -69,6 +74,7 @@ function vypis_turnaje()
   zobraz_podstranku(9);
 }
 
+//nacitanie zvoleneho turnaja do aktualneho turnaja
 function nacitaj_turnaj(id)
 {
   zacaty_turnaj=1;

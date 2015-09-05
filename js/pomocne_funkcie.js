@@ -1,3 +1,4 @@
+/*vracia nazov tymu ktory ma byt na nejakom poradi v nejakej skupine ako sa to ma vypisat do zozanamu zapasov*/
 function ziskaj_popis_tabulka_miesto(string)
 {
   string=string.split("#tymid_")[1];
@@ -12,6 +13,7 @@ function ziskaj_popis_tabulka_miesto(string)
   return poradie+". "+lang_tim_skupiny+" "+skupina;
 }
 
+/*ziska id tymu podla random cisla pri generovani turnaja*/
 function ziskaj_id_tymu(tym)
 {
   var pocitadlo=0;
@@ -26,6 +28,7 @@ function ziskaj_id_tymu(tym)
   return tym;
 }
 
+/*vrati nazov timu podla zadaneho id*/
 function ziskaj_nazov_tymu_z_id(id)
 {
   for(var i=0; i<tymy.length;i++)
@@ -38,6 +41,7 @@ function ziskaj_nazov_tymu_z_id(id)
   return "";
 }
 
+/*zisti cu uz zapas existuje v aktualnom turnaji*/
 function zapas_uz_existuje(tym1,tym2,pocet_tymov)
 {
   tym1=ziskaj_id_tymu(tym1);
@@ -53,6 +57,7 @@ function zapas_uz_existuje(tym1,tym2,pocet_tymov)
   return 0
 }
 
+/*zisti ci tim uz v kole hral*/
 function tym_uz_v_kole_hral(tym1,tym2,kolo)
 {
   for(var i=0; i<zapasy.length; i++)
@@ -68,6 +73,7 @@ function tym_uz_v_kole_hral(tym1,tym2,kolo)
   return false
 }
 
+/*vrati pocet tymov v aktualnom turnaji*/
 function ziskaj_pocet_tymov_aktualneho_turnaju()
 {
   var pocitadlo=0

@@ -1,3 +1,4 @@
+/*zoradenie tabulky podla abecedy pomocou sortu, najskor vytvorim pole z idciek zoradim a podla toho to potom zoradim*/
 function zorad_tabulku_podla_abecedy()
 {
   var pole=[];
@@ -24,6 +25,8 @@ function zorad_tabulku_podla_abecedy()
   return pole;
 }
 
+/*ak je all=1 tak sa nedava pozor na aktualny turnaj ak nie tak sa iba z aktualneho turnaja nacitaju*/
+/*tabulka sa zostavuje zo zapasov a vyratavaju sa aj statistiky*/
 function ziskaj_tabulku_podla_zapasov(all)
 {
   var id_tymu;
@@ -121,6 +124,7 @@ function ziskaj_tabulku_podla_zapasov(all)
   return vysledne_pole;
 }
 
+/*zoradenie tabulky podla ziskanych bodov*/
 function zorad_tabulku_podla_bodov(tabulka)
 {
   var pole=[];
@@ -141,6 +145,7 @@ function zorad_tabulku_podla_bodov(tabulka)
   return vysledne_pole;
 }
 
+/*vykresli podstranku tabulka podla ziskaneho pola*/
 function vykresli_tabulku(pole)
 {
   var pocitadlo=0;
@@ -163,6 +168,7 @@ function vykresli_tabulku(pole)
   obsah_stranky[3][1]=string;
 }
 
+/*vypis dostatocneho poctu tabuliek pri turnaji*/
 function vypis_tabulky_turnaj()
 {
   for(var i=0; i<aktualny_turnaj_pocet_skupin;i++)

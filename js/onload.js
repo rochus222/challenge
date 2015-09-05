@@ -1,12 +1,18 @@
 $(document).ready(function(){
   
   //Inicializacia
+  //zobrazim titulnu stranku
   zobraz_podstranku(0);
+  //vypisem tymy z pola tymy
   vypis_tymy();
+  // nastavim menu 
   nastav_menu();
+  // spustim fungovanie backbuttonu vo funkcii onLoad
   onLoad();
   
-  //MENU
+  //MENU 
+  
+  // otvaranie a zatvaranie
   $("#menu-open").click(function(){
     otvor_menu();
   });
@@ -15,7 +21,7 @@ $(document).ready(function(){
     zatvor_menu();
   });
   
-  //MENU podstranky
+  //MENU podstranky - co sa ma vykonat po kliknuti na policko v menu
   $("#menu-1").click(function(){
     zobraz_podstranku('1');
   });
@@ -50,6 +56,7 @@ $(document).ready(function(){
   });
 });
 
+//onLoad s onDeviceReady nastavy eventlistener na stlacenie backbuttonu
 function onLoad()
 {
   document.addEventListener("deviceready", onDeviceReady, true);
@@ -60,14 +67,18 @@ function onDeviceReady()
   document.addEventListener("backbutton", onBackKeyDown, false);
 }
   
+//vypnutie aplikacie
 function exitFromApp()
 {
   navigator.app.exitApp();
 }
 
+//v page je ulozena aktualne zobrazena podstranka
 var page=0;
+//kam sa ma ist po stlaceni backbuttonu podla toho, na ktorej podstranke sa nachadzame
 function onBackKeyDown()
 {
+  //ak je otvorene menu tak sa zavre
   if(otvorene_menu==1)
   {
     zatvor_menu();
@@ -102,6 +113,7 @@ function onBackKeyDown()
   }
   else if(page==7)
   {
+    //ak su otvorene velke vysledky tak sa zavru
     if(je_zobrazena_tabulka_vysledkov_zapasu==1)($("#vysledky").css({"display":"none"}));
     else zobraz_podstranku('4');
   }
@@ -127,6 +139,7 @@ function onBackKeyDown()
   } 
 }
 
+//vypnutie appky az po potvrdeni confirmu
 function ukonciappku()
 {
   var answer = confirm(""+lang_close_app+"")
