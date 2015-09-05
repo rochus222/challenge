@@ -81,8 +81,8 @@ li
 
 ul
 {
-  list-style-type: circle;
-  margin-left:20px;
+  list-style-type: none;
+  margin-left:0;
   color:#FFFFFF;
 }
 
@@ -165,6 +165,19 @@ p
 .page li
 {
   font-size:18px;
+  background:#FFFFFF;
+  color: #42973a;
+  padding:2%;
+  width:96%;
+}
+
+.page p
+{
+  font-size:18px;
+  background:#FFFFFF;
+  color: #42973a;
+  padding:2%;
+  width:96%;
 }
 
 .menu-open
@@ -290,9 +303,14 @@ p
   text-align:center;
 }
 
-.add-submit p 
+.page .add-submit p 
 {
   margin-top:-8px;
+  font-size:inherit;
+  background:none;
+  color: #FFFFFF;
+  padding:0;
+  width:auto;
 }
 
 .team
