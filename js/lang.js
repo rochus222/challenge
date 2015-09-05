@@ -275,3 +275,29 @@ function ziskaj_popisy_v_jazyku()
     lang_pocet_skupin="Number of groups";
   }
 }
+
+function zmen_jazyk()
+{
+  ziskaj_popisy_v_jazyku();
+  update_podstranok();
+  vypis_tymy();
+  nastav_menu();
+}
+
+function update_podstranok()
+{
+  obsah_stranky=[
+  ["", "<div onClick=\"zobraz_podstranku('1');\" class=\"mainpage\"><img width=\"80%\" style=\"margin-top:20%;\" src=\"img/logo.png\"/><div class=\"home-button\">"+lang_vytvor_turnaj+"</div></div>"],
+  [""+lang_zvol_timy+"", ""],
+  [""+lang_novy_turnaj+"", ""],
+  [""+lang_tabulka+"", ""],
+  [""+lang_zapasy+"", ""],
+  [""+lang_pravidla+"", ""+lang_pravidla_sub+""],
+  [""+lang_o_aplikacii+"", ""+lang_o_aplikacii_sub+""],
+  [""+lang_vysledok+"", ""],
+  [""+lang_nastavenia+"", ""],
+  [""+lang_turnaje+"", ""],
+  [""+lang_statistiky_timov+"", ""],
+  ["", ""]
+];
+}
